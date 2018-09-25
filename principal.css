@@ -1,0 +1,38 @@
+
+#cabecera
+{
+	background-color: #0AC;
+	text-align: center;
+}
+
+#busqueda
+{
+	text-align: center;
+}
+
+.catalogo
+{
+	width: 30%;
+	height: 30%;
+}
+
+#masBuscados
+{
+	text-align: center;
+}
+
+#texto1
+{
+	font-size: 150%;
+}
+
+#texto2
+{
+	font-size: 150%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: auto;
+}
