@@ -36,3 +36,7 @@ table, th, td {
     border-collapse: collapse;
     margin: auto;
 }
+
+.modal fade{
+	background-color:#30DAB0;
+}
