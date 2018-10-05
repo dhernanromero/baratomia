@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Baratomia</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="loginestilos.css">
 </head>
 
 <body>
@@ -95,7 +96,7 @@
     
 
 
-    <div class="modal fade" id="formregistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="formlogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   			<div class="modal-dialog" role="document">
   				<div class="modal-content">
   					<div class="modal-header">
@@ -105,16 +106,16 @@
   						</button>
   					</div>
   					<div class="modal-body">
-  						<form action="algo.php" class="form-horizontal" method="POST">
+  						<form class="form-horizontal" method="POST" id="formulario">
 						<h2>Email</h2>
-						<input type="email" required="">
+						<input type="email" required="" id="mail">
 						<h2>Password</h2>
-						<input id="password" type="password" required="" maxlength="8" minlength="8">
+						<input id="password" type="password" required="" maxlength="12" minlength="12">
 						<div id="ocultar">
 						<h2>Repetir Password</h2>
-						<input id="passwordR" type="password" required="" maxlength="8" minlength="8"><br>
+						<input id="passwordR" class="" type="password" required="" maxlength="12" minlength="12"><br>
 						</div>
-						<input type="submit">
+						<input  id="estado"  type="submit">
 						</form>
       				</div>
       				<div class="modal-footer">

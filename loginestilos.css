@@ -1,0 +1,12 @@
+.error{
+	border-color: red;
+	color: red;
+}
+.ok{
+	border-color: green;
+	color: green;
+}
+
+.completos{
+	background-color: green; 
+}
