@@ -1,15 +1,64 @@
 $(document).ready(function() {
 	$("#login").click(function() {
-		$("#formregistro").attr('id','formlogin');
+		$(".modal,.fade").attr('id','formlogin');
 		$("#exampleModalLabel").text("Logueate");
 		$("#estado").val("Iniciar Sesion");
 		$("#ocultar").hide();
+
 	});
 	$("#registro").click(function() {
-		$("#formlogin").attr('id','formregistro');
+		$(".modal,.fade").attr('id','formregistro');
 		$("#exampleModalLabel").text("Registrate");
 		$("#ocultar").show();
 		$("#estado").val("Registro");
+		
+		$("#passwordR").on("input",function(e){ 
+
+		if ($("#password").val()===$("#passwordR").val()){
+			$("#passwordR").attr('class', 'ok');
+			$("#password").attr('class', 'ok');
+			$(".imagenchica").attr('src', 'imagenes/ok.png');
+		}
+
+		else
+		{
+			$("#passwordR").attr('class', 'error');
+			$("#password").attr('class', 'error');
+			$(".imagenchica").attr('src', 'imagenes/error.png');
+			
+		}
+		});
+
+		$("#password").on("input",function(e){ 
+
+		if ($("#passwordR").val()===$("#password").val()){
+			$("#passwordR").attr('class', 'ok');
+			$("#password").attr('class', 'ok');
+			$(".imagenchica").attr('src', 'imagenes/ok.png');
+		}
+
+		else
+		{
+			$("#passwordR").attr('class', 'error');
+			$("#password").attr('class', 'error');
+			$(".imagenchica").attr('src', 'imagenes/error.png');
+			
+		}
+		});
+	
+
+	
+	$("#estado").click(function(e) {
+		if ($("#password").val()===$("#passwordR").val()){
+			console.log("bien");
+		}
+		else{
+			$("#incompleto").text('error los password no coinciden');
+			e.preventDefault();
+
+		}
+	});
+
 	});
 
 	$("#password,#passwordR").on('input', function(e) {
@@ -18,44 +67,16 @@ $(document).ready(function() {
 	};
 	});
 
-	$("#passwordR").on("input",function(e){ 
-
-		if ($("#password").val()===$("#passwordR").val()){
-			$("#passwordR").attr('class', 'ok');
-			$("#password").attr('class', 'ok');
-		}
-
-		else
-		{
-			$("#passwordR").attr('class', 'error');
-			$("#password").attr('class', 'error');
-			
-		}
-		});
-	$("#password").on("input",function(e){ 
-
-		if ($("#password").val()===$("#passwordR").val()){
-			$("#passwordR").attr('class', 'ok');
-			$("#password").attr('class', 'ok');
-		}
-
-		else
-		{
-			$("#passwordR").attr('class', 'error');
-			$("#password").attr('class', 'error');
-			
-		}
-		});
-
-
 	
-	$("#estado").click(function() {
-		if ($("#password").val()===$("#passwordR").val()){
-			console.log("bien");
-		}
-		else{
-			console.log("mal");
-		}
+	$('.modal ,.fade').on('hidden.bs.modal', function (e) {
+		$("#mail").val("");
+		$("#passwordR").val("");
+		$("#password").val("");
+		$("#password").attr('class', '');
+		$("#passwordR").attr('class', '');
+		$("#incompleto").text('');
+		$(".modal,.fade").attr('id','');
+		$(".imagenchica").attr('src', '');
 	});
 
 	
