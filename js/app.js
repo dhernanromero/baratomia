@@ -20,7 +20,12 @@ const app = new Vue({
         },
         iniciarBusqueda: function(){
             console.info('INCIANDO CONSULTA');
-            this.$http.post('busqueda.php', { palabra: this.palabraBuscar }).then(response => {
+            var palabras = this.palabraBuscar;
+            patron = /[ ]/gi;            
+            palabrasBuscar = palabras.replace(patron, '-');
+        
+            console.info(palabrasBuscar);
+            this.$http.post('busqueda.php', { palabra: palabraBuscar }).then(response => {
                 console.log(response);
                 if (response.status === 200) {
                     var respuesta = JSON.parse( response.bodyText);

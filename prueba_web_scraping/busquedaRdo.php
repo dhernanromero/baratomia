@@ -19,15 +19,16 @@
         $imagenUrl = $imagen->attr['src'];
         $spanPrecio = $divProducto->find('span[class=price]',0);
         $precio = $spanPrecio->innertext;
-    //    echo $linkUrl;
-    //    echo '<br>';
-    //    echo $nombre;
-    //  echo '<br>';
-    //  echo $imagenUrl;
-    //  echo '<br>';
-    //  echo $precio;
-    //  echo '<br>';
-     
+     /*
+        echo $linkUrl;
+        echo '<br>';
+      echo $nombre;
+    echo '<br>';
+    echo $imagenUrl;
+      echo '<br>';
+      echo $precio;
+    echo '<br>';
+     */
 
       $arrayProductos[] = array('nombre' => $nombre, 'url' => $linkUrl,'imgUrl' => $imagenUrl, 'precio'=> $precio);
      
