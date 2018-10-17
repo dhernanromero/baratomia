@@ -2,40 +2,36 @@
     <head>
     </head>
     <body>
-        <h1>Prototipo de búsqueda de Musimundo:</h1>
-        <br>
         <?php
-            require 'simple_html_dom.php';
+            require_once 'simple_html_dom.php';
 
-            $busqueda = $_GET['busquedaMusimundo'];
-            echo "<h3>Resultado de la búsqueda '" . $busqueda . "'</h3><br>";
-            $parseBusqueda = str_replace(' ', '+', $busqueda);
-            $url = 'https://www.alamaula.com/s-' . $parseBusqueda . '/v1q0p1';
-
-            $html = file_get_html($url);
-            $container = $html->find('div[class=view]', 0);
-            if($container->class == 'view top-listings')
+            function obtenerProductosMusimundo($productoBuscado)
             {
-                $container = $html->find('div[class=view]', 1);
-            }
+                $parseProductoBuscado = str_replace(' ', '%20', $productoBuscado);
+                $url = 'https://www.musimundo.com/Busqueda?cbrand=0&title=0&artist=0&categories=&search=' . $parseProductoBuscado . '&typeGrid=grid';
+                $listaProductos = array();
 
-            $lista = $container->find('ul', 0);
-            $items = $lista->find('li');
+                $html = file_get_html($url);
+                $container = $html->find('div[class=products]', 0);
 
-            echo '<table><tr><th>Imagen</th><th>Articulo</th><th>Descripcion</th></tr>';
-            foreach($items as $item)
-            {
-                $divGeneral = $item->find('div', 0);
-                $divContenedor = $divGeneral->find('div[class=container]', 0);
-                $divThumb = $divGeneral->find('div[class=thumb shrtHght]', 0);
-                $divImg = $divThumb->find('div[id=img-cnt]', 0);
-                $img = $divImg->find('img', 0);
-                $srcImg = $img->src;
-                $divTitulo = $divContenedor->find('div[class=title]', 0);
-                $divDescripcion = $divContenedor->find('div[class=description]', 0);
-                $titulo = $divTitulo->find('a', 0)->innertext;
-                $descripcion =  $divDescripcion->innertext;
-                echo '<tr><td><img src="' . $srcImg . '"></td><td>' . $titulo . '</td><td>' . $descripcion . '</td></tr>';
+                $lista = $container->find('article[class=product]');
+                
+                foreach($lista as $item)
+                {
+                    $nombre = $item->find('a[class=name productClicked]', 0)->innertext;
+                    $precio = $item->find('span[class=price online]', 0)->innertext;
+                    $link = $item->find('a[class=img productClicked]', 0)->href;
+                    $imagen = $item->find('a[class=img productClicked]', 0)->find('img', 0)->src;
+
+                    $producto = new Producto;
+                    $producto->nombre = $nombre;
+                    $producto->precio = $precio;
+                    $producto->link = $link;
+                    $producto->urlImagen = $imagen;
+
+                    $listaProductos[] = $producto;
+                }
+                return $listaProductos;
             }
         ?>
     </body>
