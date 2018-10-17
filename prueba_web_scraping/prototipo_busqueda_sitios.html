@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap3.css">
+        <link rel="stylesheet" type="text/css" href="prototipo_busqueda_sitios.css">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="container">
+                <div class="row">
+                    <h1>Prototipo de búsqueda</h1>
+                    <br>
+                    <p>Se realiza la búsqueda de productos de distintos sitios de venta online.</p>
+                    <br><br><br>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <form action="prototipo_busqueda_alamaula.php">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label for="email">Búsqueda en alamaula:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="inputNombre" placeholder="Ingrese el artículo" name="busquedaAlamaula">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" id="botonAlamaula" class="btn btn-info">Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="prototipo_busqueda_fravega.php">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label for="email">Búsqueda en Frávega:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="inputNombre" placeholder="Ingrese el artículo" name="busquedaFravega">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" id="botonFravega" class="btn btn-info">Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="prototipo_busqueda_garbarino.php">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label for="email">Búsqueda en Garbarino:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="inputNombre" placeholder="Ingrese el artículo" name="busquedaGarbarino">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" id="botonGarbarino" class="btn btn-info">Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="prototipo_busqueda_musimundo.php">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label for="email">Búsqueda en Musimundo:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="inputNombre" placeholder="Ingrese el artículo" name="busquedaMusimundo">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" id="botonMusimundo" class="btn btn-info">Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="prototipo_busqueda_linio.php">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label for="email">Búsqueda en Linio:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="inputNombre" placeholder="Ingrese el artículo" name="busquedaLinio">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" id="botonLinio" class="btn btn-info">Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="page-header"></div>
+            </div>
+    </body>
+    <script src="lib/jquery3.js"></script>
+    <script src="lib/bootstrap3.js"></script>
+    <script src="prototipo_busqueda_sitios.js"></script>
+</html>
