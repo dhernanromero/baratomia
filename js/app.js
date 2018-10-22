@@ -25,7 +25,7 @@ const app = new Vue({
             palabrasBuscar = palabras.replace(patron, '-');
         
             console.info(palabrasBuscar);
-            this.$http.post('busqueda.php', { palabra: palabraBuscar }).then(response => {
+            this.$http.post('busqueda.php', { palabra: palabrasBuscar }).then(response => {
                 console.log(response);
                 if (response.status === 200) {
                     var respuesta = JSON.parse( response.bodyText);
