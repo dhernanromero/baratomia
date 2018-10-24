@@ -1,19 +1,39 @@
 $(document).ready(function() {
 	$("#login").click(function() {
+		$("#formulario").attr("action","login.php");
 		$(".modal,.fade").attr('id','formlogin');
 		$("#exampleModalLabel").text("Logueate");
 		$("#estado").val("Iniciar Sesion");
 		$("#ocultar").hide();
 
+		 // $("#passwordLogin").val('');
+
+		  $("#passwordLogin").show();
+		  $("#password").hide();
+		  $("#password").attr('required', false);
+		  $("#passwordLogin").attr('required', true);
+
+
+
 	});
+
+
+
+
 	$("#registro").click(function() {
+		$("#formulario").attr("action","insertarusuario.php");
 		$(".modal,.fade").attr('id','formregistro');
 		$("#exampleModalLabel").text("Registrate");
 		$("#ocultar").show();
 		$("#estado").val("Registro");
 		
-		$("#passwordR").on("input",function(e){ 
+		  $("#password").show();
+		  $("#passwordLogin").hide();
+		  $("#passwordLogin").attr('required', false);
 
+
+		$("#passwordR").on("input",function(e){ 
+		$("#incompleto").text('');
 		if ($("#password").val()===$("#passwordR").val()){
 			$("#passwordR").attr('class', 'ok');
 			$("#password").attr('class', 'ok');
@@ -30,7 +50,7 @@ $(document).ready(function() {
 		});
 
 		$("#password").on("input",function(e){ 
-
+			$("#incompleto").text('');
 		if ($("#passwordR").val()===$("#password").val()){
 			$("#passwordR").attr('class', 'ok');
 			$("#password").attr('class', 'ok');
@@ -53,7 +73,7 @@ $(document).ready(function() {
 			console.log("bien");
 		}
 		else{
-			$("#incompleto").text('error los password no coinciden');
+			$("#incompleto").text('Error los password no coinciden');
 			e.preventDefault();
 
 		}
@@ -61,7 +81,7 @@ $(document).ready(function() {
 
 	});
 
-	$("#password,#passwordR").on('input', function(e) {
+	$("#password,#passwordR,#passwordLogin").on('input', function(e) {
 		if (!/^[ a-zA-Z0-9]*$/i.test(this.value)) {
         this.value = this.value.replace(/[^ a-z0-9áéíóúüñ]+/ig,"");
 	};
@@ -77,9 +97,11 @@ $(document).ready(function() {
 		$("#incompleto").text('');
 		$(".modal,.fade").attr('id','');
 		$(".imagenchica").attr('src', '');
+		$("#formulario").attr("action","");
 	});
 
 	
 
 
 });
+

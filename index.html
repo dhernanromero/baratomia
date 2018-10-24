@@ -6,11 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Baratomia</title>
+
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="loginestilos.css">
 </head>
 
 <body>
+    <?php 
+    session_start();
+    if(isset($_SESSION["usuario"])){
+    header("Location:index2.php");
+}
+ ?>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -106,19 +113,22 @@
   						</button>
   					</div>
   					<div class="modal-body">
-  						<form class="form-horizontal" method="POST" id="formulario">
+  						<form class="form-horizontal" method="POST" id="formulario" action="" >
 						<h2>Email</h2>
-						<input type="email" required="" id="mail">
+						<input type="email" required="" id="mail" name="mail">
 						<h2>Password</h2>
-						<input id="password" type="password" required="" maxlength="12" minlength="12">
+						<input id="passwordLogin" type="password" required="" maxlength="12" minlength="12" name="passlogin" style="display:none;">
+
+						<input id="password" type="password" required="" maxlength="12" minlength="12" name="pass">
 						<img src="" alt="" class="imagenchica">
 						<div id="ocultar">
 						<h2>Repetir Password</h2>
-						<input id="passwordR" class="" type="password" required="" maxlength="12" minlength="12">
+						<input id="passwordR" class="" type="password" maxlength="12" minlength="12">
 						<img src="" alt="" class="imagenchica"><br>
 						</div>
 						<input  id="estado"  type="submit">
                         <h3 id="incompleto"></h3>
+                     
 						</form>
       				</div>
       				<div class="modal-footer">
