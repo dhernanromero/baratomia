@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$("#login").click(function() {
-		$("#formulario").attr("action","login.php");
+		$("#formulario").attr("action","base_de_datos/login.php");
 		$(".modal,.fade").attr('id','formlogin');
 		$("#exampleModalLabel").text("Logueate");
 		$("#estado").val("Iniciar Sesion");
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 
 	$("#registro").click(function() {
-		$("#formulario").attr("action","insertarusuario.php");
+		$("#formulario").attr("action","base_de_datos/insertarusuario.php");
 		$(".modal,.fade").attr('id','formregistro');
 		$("#exampleModalLabel").text("Registrate");
 		$("#ocultar").show();
