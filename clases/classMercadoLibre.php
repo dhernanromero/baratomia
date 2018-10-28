@@ -12,20 +12,20 @@
 		    $listaProductos = array();
 		    for ($i=0; $i <10 ; $i++) { 
 		        # code...
-		        $var = array();
-		        $var[] = $ProductosML["results"][$i]["title"];
-		        $var[] = $ProductosML["results"][$i]["permalink"];
-		        $var[] = $ProductosML["results"][$i]["thumbnail"];
-		        $var[] = (float)$ProductosML["results"][$i]["price"];
+		        // $var = array();
+		        // $var[] = $ProductosML["results"][$i]["title"];
+		        // $var[] = $ProductosML["results"][$i]["permalink"];
+		        // $var[] = $ProductosML["results"][$i]["thumbnail"];
+		        // $var[] = (float)$ProductosML["results"][$i]["price"];
 		        
-		        $listaProductos[] = $var;
-		        // $producto = new Producto;
-		        // $producto->nombre = $ProductosML["results"][$i]["title"];
-		        // $producto->link = $ProductosML["results"][$i]["permalink"];
-		        // $producto->urlImagen = $ProductosML["results"][$i]["thumbnail"];
-		        // $producto->precio = (float)$ProductosML["results"][$i]["price"];
+		        // $listaProductos[] = $var;
+		        $producto = new Producto();
+		        $producto->nombre = $ProductosML["results"][$i]["title"];
+		        $producto->link = $ProductosML["results"][$i]["permalink"];
+		        $producto->urlImagen = $ProductosML["results"][$i]["thumbnail"];
+		        $producto->precio = (float)$ProductosML["results"][$i]["price"];
 		        
-		        // $listaProductos[] = $producto;
+		        $listaProductos[] = $producto;
 		    }
 
 		    return $listaProductos;

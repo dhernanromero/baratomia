@@ -2,10 +2,10 @@
 	
 	 class Producto
     {
-        public $nombre;
-        public $url;
-		public $imagen;
-		public $precio;
+		public $nombre;
+        public $precio;
+        public $link;
+        public $urlImagen;
         
     }
 

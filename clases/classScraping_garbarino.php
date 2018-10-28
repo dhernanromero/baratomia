@@ -25,22 +25,24 @@
                 $imagen = $item->find('img[itemprop=image]', 0)->src;
                 $link = $item->find('a', 0)->href;
 
-                // $producto = new Producto;
-                // $producto->nombre = $nombre;
-                // $producto->precio = (float)str_replace('$', '', $precio);
-                // $producto->link = 'https://www.garbarino.com' . $link;
-                // $producto->urlImagen = $imagen;
+                $producto = new Producto();
+                $producto->nombre = $nombre;
+                $producto->precio = (float)str_replace('$', '', $precio);
+                $producto->link = 'https://www.garbarino.com' . $link;
+                $producto->urlImagen = $imagen;
 
-                // $listaProductos[] = $producto;
+                $listaProductos[] = $producto;
+                
+                // $var = array();
+                
+                // $var[] = trim($nombre);
+                // $var[] = trim('https://www.garbarino.com' . $link);
+                // $var[] = trim($imagen);
+                // $precio_obtengo = substr(trim($precio),1);
+                // $precio_tranformo = str_replace(".", "", $precio_obtengo);
+                // $var[] = (float)$precio_tranformo;
 
-                $var[] = trim($nombre);
-                $var[] = trim('https://www.garbarino.com' . $link);
-                $var[] = trim($imagen);
-                $precio_obtengo = substr(trim($precio),1);
-                $precio_tranformo = str_replace(".", "", $precio_obtengo);
-                $var[] = (float)$precio_tranformo;
-
-                $listaProductos[] = $var;
+                // $listaProductos[] = $var;
             }
             return $listaProductos;
         }
