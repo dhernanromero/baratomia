@@ -27,7 +27,10 @@
 
                 $producto = new Producto();
                 $producto->nombre = $nombre;
-                $producto->precio = (float)str_replace('$', '', $precio);
+                $precio_obtengo = substr(trim($precio),1);
+                $precio_tranformo = str_replace(".", "", $precio_obtengo);
+                $producto->precio = (float)$precio_tranformo;
+                //$producto->precio = (float)str_replace('$', '', $precio);
                 $producto->link = 'https://www.garbarino.com' . $link;
                 $producto->urlImagen = $imagen;
 

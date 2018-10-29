@@ -21,17 +21,17 @@ if(isset($post['palabra'])){
 
     $resultado = array_merge($resultado1,$resultado2);
 
-    // $nombre = array(); 
-    // $link = array(); 
-    // $imagen = array();
-    // $precio = array();
+    $nombre = array(); 
+    $link = array(); 
+    $imagen = array();
+    $precio = array();
     
-    // foreach($resultado as $key=>$val) { 
-    //     array_push($nombre, $val['0']); 
-    //     array_push($link, $val['1']);
-    //     array_push($imagen, $val['2']);
-    //     array_push($precio, $val['3']); 
-    // } 
+    foreach($resultado as $key=>$val) { 
+        array_push($nombre, $val->nombre); 
+        array_push($link, $val->link);
+        array_push($imagen, $val->urlImagen);
+        array_push($precio, $val->precio); 
+    } 
     
     array_multisort($precio, SORT_ASC, $resultado); 
 
