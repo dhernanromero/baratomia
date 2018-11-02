@@ -31,7 +31,7 @@ if(isset($post['palabra'])){
     foreach($resultado as $key=>$val) { 
         array_push($nombre, $val->nombre); 
         array_push($link, $val->link);
-        array_push($imagen, $val->urlimagen);
+        array_push($imagen, $val->urlImagen);
         array_push($precio, $val->precio); 
     } 
     

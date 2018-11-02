@@ -33,10 +33,14 @@ const app = new Vue({
                     this.articulos = [];
                     respuesta.forEach(row => {
                         this.articulos.push({
-                            nombre: row[0],
-                            url: row[1],
-                            imagen: row[2],
-                            precio: row[3]
+                            // nombre: row[0],
+                            // url: row[2],
+                            // imagen: row[3],
+                            // precio: row[1]
+                            nombre: row.nombre,
+                            url: row.link,
+                            imagen: row.urlImagen,
+                            precio: row.precio,
                         });
                     });
                     //this.articulos = items;
