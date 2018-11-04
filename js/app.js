@@ -1,8 +1,8 @@
 const app = new Vue({
     el: '#app',
     data: {
-        articulos : [
-        ],
+        articulos : [],
+        buscadosLista : [],
         palabraBuscar: '',
     },
     methods: {
@@ -31,6 +31,7 @@ const app = new Vue({
                     var respuesta = JSON.parse( response.bodyText);
                     console.log(respuesta);
                     this.articulos = [];
+                    console.log('longitud: ', respuesta.length);
                     respuesta.forEach(row => {
                         this.articulos.push({
                             // nombre: row[0],
@@ -45,7 +46,11 @@ const app = new Vue({
                     });
                     //this.articulos = items;
 
+                    // CORREGIR CADA CLASE de Busqueda!!!
+                    // Agrega palabra a Lista de Buscados, Se debe corregir en el servidor para cuando no se encuentren
+                    // resultados, retorne un JSON vacio, porque por el momento retorn el error.
 
+                    this.buscadosLista.push(this.palabraBuscar);
                 }
             }, response => {
                 console.error("Error");

@@ -8,6 +8,7 @@
     <title>Baratomia</title>
 
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="loginestilos.css">
 </head>
 
@@ -43,58 +44,53 @@
     <div class="container" id="app">
         <div class="col-md-3">
         </div>
-        <div class="col-md-6">
-            <input v-model="palabraBuscar" @change="buscarPalabra" class="form-control" placeholder="Buscar...">
-        </div>
+        <form v-on:submit.prevent="iniciarBusqueda">
+            <div class="col-md-6">
+                <input v-model="palabraBuscar" @change="buscarPalabra" class="form-control" require placeholder="Buscar...">
+            </div>
 
-        <div class="col-md-3">
-            <button v-on:click="iniciarBusqueda" class="btn btn-success">Buscar</button>
-        </div>
+            <div class="col-md-3">
+                <button class="btn btn-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+            </div>
+        </form>
         <div class="row">
             <hr>
         </div>
-        <div class="col-md-2">
-            <h4>Publicidad</h4>
-        </div>
-        <div class="col-md-7">
-            <div class="row">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
 
+
+                </div>
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Sitio</th>
+                                <th>Precio</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="articulo in articulos">
+                                <td>{{articulo.nombre}}</td>
+                                <td><a v-bind:href="articulo.url" v-text="articulo.url"></a></td>
+                                <td>{{articulo.precio}}</td>
+                                <td><img class="img-responsive" v-bind:src="articulo.imagen" ></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
-            <div class="row">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Sitio</th>
-                            <th>Precio</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="articulo in articulos">
-                            <td>{{articulo.nombre}}</td>
-                            <td><a v-bind:href="articulo.url" v-text="articulo.url"></a></td>
-                            <td>{{articulo.precio}}</td>
-                            <td><img v-bind:src="articulo.imagen" ></td>
-                            <td><input type="checkbox"></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="col-md-offset-1 col-md-2">
+                <h4>Los más Buscados</h4>
+                <ul class="list-group">
+                    <li v-for="(buscado, indexBuscado) in buscadosLista" v-text="buscado" class="list-group-item"></li>
+                </ul>
             </div>
-
-        </div>
-        <div class="col-md-offset-1 col-md-2">
-            <h4>Los más Buscados</h4>
-            <ul class="list-group">
-                <li class="list-group-item">Camara Cannon</li>
-                <li class="list-group-item">Notebook v310</li>
-                <li class="list-group-item">Camra Cannon</li>
-                <li class="list-group-item">Notebook Exo</li>
-                <li class="list-group-item">Camra Cannon</li>
-                <li class="list-group-item">Camra Cannon</li>
-
-            </ul>
         </div>
         <div class="row">
             <pre> Buscando: {{ palabraBuscar }}</pre>
