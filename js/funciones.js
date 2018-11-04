@@ -37,14 +37,14 @@ $(document).ready(function() {
 		if ($("#password").val()===$("#passwordR").val()){
 			$("#passwordR").attr('class', 'ok');
 			$("#password").attr('class', 'ok');
-			$(".imagenchica").attr('src', 'imagenes/ok.png');
+			$(".imagenchica").attr('src', 'base_de_datos/ok.png');
 		}
 
 		else
 		{
 			$("#passwordR").attr('class', 'error');
 			$("#password").attr('class', 'error');
-			$(".imagenchica").attr('src', 'imagenes/error.png');
+			$(".imagenchica").attr('src', 'base_de_datos/error.png');
 			
 		}
 		});
@@ -54,14 +54,14 @@ $(document).ready(function() {
 		if ($("#passwordR").val()===$("#password").val()){
 			$("#passwordR").attr('class', 'ok');
 			$("#password").attr('class', 'ok');
-			$(".imagenchica").attr('src', 'imagenes/ok.png');
+			$(".imagenchica").attr('src', 'base_de_datos/ok.png');
 		}
 
 		else
 		{
 			$("#passwordR").attr('class', 'error');
 			$("#password").attr('class', 'error');
-			$(".imagenchica").attr('src', 'imagenes/error.png');
+			$(".imagenchica").attr('src', 'base_de_datos/error.png');
 			
 		}
 		});
