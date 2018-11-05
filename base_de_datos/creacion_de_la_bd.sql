@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `BDUSUARIOS`.`usuarios` (
   `mail` VARCHAR(55) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `estado_idEstado` INT NOT NULL,
+  `cod_activacion` VARCHAR(50) NULL,
   PRIMARY KEY (`idusuarios`),
   INDEX `fk_usuarios_estado1_idx` (`estado_idEstado` ASC) ,
   UNIQUE INDEX `mail_UNIQUE` (`mail` ASC) ,
@@ -62,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `BDUSUARIOS`.`usuarios_has_seguimientoproducto` (
   `fecha` DATE NOT NULL,
   PRIMARY KEY (`usuarios_idusuarios`, `seguimientoproducto_idhistorial`),
   INDEX `fk_usuarios_has_seguimientoproducto_seguimientoproducto1_idx` (`seguimientoproducto_idhistorial` ASC) ,
-  INDEX `fk_usuarios_has_seguimientoproducto_usuarios_idx` (`usuarios_idusuarios` ASC) ,
+  INDEX `fk_usuarios_has_seguimientoproducto_usuarios_idx` (`usuarios_idusuarios` ASC),
   CONSTRAINT `fk_usuarios_has_seguimientoproducto_usuarios`
     FOREIGN KEY (`usuarios_idusuarios`)
     REFERENCES `BDUSUARIOS`.`usuarios` (`idusuarios`)
