@@ -12,7 +12,7 @@ $(document).ready(function() {
 		  $("#password").hide();
 		  $("#password").attr('required', false);
 		  $("#passwordLogin").attr('required', true);
-
+		  $("#resultado").hide();//testear posible error de campo requerido?
 
 
 	});
@@ -28,8 +28,10 @@ $(document).ready(function() {
 		$("#estado").val("Registro");
 		
 		  $("#password").show();
+		  $("#password").attr('required', true);
 		  $("#passwordLogin").hide();
-		  $("#passwordLogin").attr('required', false);
+		  $("#passwordLogin").attr('required', false); 
+		  $("#resultado").show();//testear posible error de campo requerido?
 
 
 		$("#passwordR").on("input",function(e){ 
@@ -98,10 +100,40 @@ $(document).ready(function() {
 		$(".modal,.fade").attr('id','');
 		$(".imagenchica").attr('src', '');
 		$("#formulario").attr("action","");
+		$("#resultado").html("");
+
 	});
 
-	
-
+	$('#mail').blur(function(event) {
+		var correo=$('#mail').val();
+		var parametros={
+			"email":correo,
+		};
+		//console.log(parametros);
+		 $.ajax({
+                data:  parametros,
+                url:   'base_de_datos/existemail.php',
+                type:  'post',
+                beforeSend: function () {
+                        $("#resultado").html("Procesando, espere por favor...");
+                },
+                success:  function (response) {
+                        var respuesta=response.trim();
+                        if (respuesta ==="ERROR") {
+            
+                        	$("#resultado").html("Este mail ya existe, por favor ingrese otro");
+                        }
+                        else{
+                        	if(correo==""){
+                        		$("#resultado").html("por favor complete el campo mail");
+                        	}
+                        	else{
+                        	$("#resultado").html("ok");
+                        }
+                        }
+                }
+        });
+	});
 
 });
 
