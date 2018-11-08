@@ -5,6 +5,7 @@ $(document).ready(function() {
 		$("#exampleModalLabel").text("Logueate");
 		$("#estado").val("Iniciar Sesion");
 		$("#ocultar").hide();
+		$('#mail').attr('id', 'maillog');
 
 		 // $("#passwordLogin").val('');
 
@@ -16,11 +17,11 @@ $(document).ready(function() {
 
 
 	});
-
-
+	var continuar=true;
 
 
 	$("#registro").click(function() {
+		$('#maillog').attr('id', 'mail');
 		$("#formulario").attr("action","base_de_datos/insertarusuario.php");
 		$(".modal,.fade").attr('id','formregistro');
 		$("#exampleModalLabel").text("Registrate");
@@ -32,6 +33,11 @@ $(document).ready(function() {
 		  $("#passwordLogin").hide();
 		  $("#passwordLogin").attr('required', false); 
 		  $("#resultado").show();//testear posible error de campo requerido?
+
+		$("#mail").on('input', function(event) {
+			$("#incompleto").text('');
+		});
+
 
 
 		$("#passwordR").on("input",function(e){ 
@@ -70,7 +76,12 @@ $(document).ready(function() {
 	
 
 	
+	console.log(continuar);
 	$("#estado").click(function(e) {
+		if(continuar!=true){
+			$("#incompleto").text('Error ingrese un mail distinto');
+			e.preventDefault();}
+
 		if ($("#password").val()===$("#passwordR").val()){
 			console.log("bien");
 		}
@@ -79,6 +90,40 @@ $(document).ready(function() {
 			e.preventDefault();
 
 		}
+	});
+
+
+	$('#mail').keyup(function(event) {
+		var correo=$('#mail').val();
+		var parametros={
+			"email":correo,
+		};
+		//console.log(parametros);
+		 $.ajax({
+                data:  parametros,
+                url:   'base_de_datos/existemail.php',
+                type:  'post',
+                beforeSend: function () {
+                        $("#resultado").html("Procesando, espere por favor...");
+                },
+                success:  function (response) {
+                        var respuesta=response.trim();
+                        if (respuesta ==="ERROR") {
+            
+                        	$("#resultado").html("Este mail ya existe, por favor ingrese otro");
+                        	continuar=false;
+                        }
+                        else{
+                        	if(correo==""){
+                        		$("#resultado").html("por favor complete el campo mail");
+                        	}
+                        	else{
+                        	$("#resultado").html("ok");
+                        	continuar=true;
+                        }
+                        }
+                }
+        });
 	});
 
 	});
@@ -101,39 +146,11 @@ $(document).ready(function() {
 		$(".imagenchica").attr('src', '');
 		$("#formulario").attr("action","");
 		$("#resultado").html("");
+		continuar=true;
 
 	});
 
-	$('#mail').blur(function(event) {
-		var correo=$('#mail').val();
-		var parametros={
-			"email":correo,
-		};
-		//console.log(parametros);
-		 $.ajax({
-                data:  parametros,
-                url:   'base_de_datos/existemail.php',
-                type:  'post',
-                beforeSend: function () {
-                        $("#resultado").html("Procesando, espere por favor...");
-                },
-                success:  function (response) {
-                        var respuesta=response.trim();
-                        if (respuesta ==="ERROR") {
-            
-                        	$("#resultado").html("Este mail ya existe, por favor ingrese otro");
-                        }
-                        else{
-                        	if(correo==""){
-                        		$("#resultado").html("por favor complete el campo mail");
-                        	}
-                        	else{
-                        	$("#resultado").html("ok");
-                        }
-                        }
-                }
-        });
-	});
+	
 
 });
 

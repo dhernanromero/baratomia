@@ -6,7 +6,6 @@ $mail=$_POST["mail"];
 $password_h=password_hash($pass,PASSWORD_DEFAULT);
 $estado=0;
 
-
 try {
 	$base=new PDO('mysql:host=localhost;dbname=bdusuarios','root','');
 	$base->exec("SET CHARACTER SET utf8");
@@ -17,6 +16,7 @@ try {
 	$resultado=$comprobar->fetchAll();
 	if($resultado){
 		echo "ERROR, el mail ya existe";
+		
 	}
 	else {
 		$cadena="";
