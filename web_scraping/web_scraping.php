@@ -36,5 +36,11 @@
             $scraping = new ScrapingMusimundo;
             return $scraping->obtenerProductos($busqueda);
         }
+
+        function obtenerDetalleProductoGarbarino($urlProducto)
+        {
+            $scraping = new ScrapingGarbarino;
+            return $scraping->obtenerDetalleProducto($urlProducto);
+        }
     }
 ?>
