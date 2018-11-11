@@ -7,7 +7,7 @@ try {
 	$resultado=$base->prepare($sql);
 
 	$email=$_POST["mail"];
-	$password=$_POST["passlogin"];
+	$password=$_POST["pass"];
 
 	$resultado->execute(array(":email"=>$email));
 
@@ -17,9 +17,10 @@ try {
 	{
 		if ($registro['estado_idEstado']==0)
 		{
-			echo "primero debe activar la cuenta via mail";
+			echo "activar";
 		}
 		else{
+			echo "ok";
 			session_start();
 			$_SESSION["usuario"]=$_POST["mail"];
 			header("location:../index2.php");}
@@ -27,7 +28,7 @@ try {
 	}
 	else{
 
-		echo ("error en el pasword o en el usuario");
+		echo ("error");
 	}
 
 	

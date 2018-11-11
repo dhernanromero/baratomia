@@ -11,6 +11,7 @@ try {
 	$activar->execute();
 	$activar->closeCursor();
 	echo"la cuenta fue activada";
+	header("location:../base_de_datos/cuenta_activada.html");
 	
 	
 } catch (Exception $e) {

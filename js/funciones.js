@@ -1,13 +1,22 @@
 $(document).ready(function() {
 	$("#login").click(function() {
+		$("#password").val("");
+		$("#estado").attr('type', 'button');
+		$("#estado").attr('id', 'estadologin');
+
+
 		$("#formulario").attr("action","base_de_datos/login.php");
 		$(".modal,.fade").attr('id','formlogin');
 		$("#exampleModalLabel").text("Logueate");
-		$("#estado").val("Iniciar Sesion");
+		$("#estadologin").val("Iniciar Sesion");
 		$("#ocultar").hide();
 		$('#mail').attr('id', 'maillog');
+		$("#maillog").on('input', function(event) {
+			$("#incompleto").text('');
+		});
 
-		 // $("#passwordLogin").val('');
+
+		  $("#passwordLogin").val('');
 
 		  $("#passwordLogin").show();
 		  $("#password").hide();
@@ -15,13 +24,79 @@ $(document).ready(function() {
 		  $("#passwordLogin").attr('required', true);
 		  $("#resultado").hide();//testear posible error de campo requerido?
 
+		  $("#estadologin").click(function(e) {
+		  	if($("#maillog").val().length<=0 && $("#passwordLogin").val().length<=0){
+		  	$("#incompleto").text('ambos campos deben ser completados');
+		  	e.preventDefault();
+
+		  	}
+
+
+		  	else if($("#passwordLogin").val().length<=0){
+		  		$("#incompleto").text('complete el campo password');
+		  		e.preventDefault();
+		  	}
+
+		  	
+
+		  	else if($("#maillog").val().length<=0){
+		  		$("#incompleto").text('complete el campo mail');
+		  		e.preventDefault();
+
+		  	}
+		  	else{
+		  	var correo=$('#maillog').val();
+		  	var pass=$("#passwordLogin").val();
+		  	param={"mail":correo,"pass":pass};
+		  	console.log("lofin");
+		  	$.ajax({
+                data:  param,
+                url:   'base_de_datos/login.php',
+                type:  'post',
+                beforeSend: function () {
+                       
+                },
+                success:  function (response) {
+                	    var respuesta=response;
+                        if (respuesta!="activar" && respuesta!=="error") {
+                        	$(location).attr("href","index2.php");
+
+                        }
+                        else if(respuesta=="activar"){
+                        	$("#incompleto").html("la cuenta debe ser activada por mail para ingresar");
+                        }
+                        else if(respuesta=="error"){
+                        	$("#incompleto").html("error en el usuario o password");
+                        }     
+                        
+                        
+                        
+                },
+                error: function(response){
+                	alert(response);
+                }
+        });}
+		  });
+
+
+		  
+
 
 	});
+
+
 	var continuar=true;
 
 
 	$("#registro").click(function() {
+		$("#estado").off();
+		
+		$("#estado").attr('type', 'submit');//esto no es el problema
+		
+
+
 		$('#maillog').attr('id', 'mail');
+		
 		$("#formulario").attr("action","base_de_datos/insertarusuario.php");
 		$(".modal,.fade").attr('id','formregistro');
 		$("#exampleModalLabel").text("Registrate");
@@ -137,6 +212,7 @@ $(document).ready(function() {
 	
 	$('.modal ,.fade').on('hidden.bs.modal', function (e) {
 		$("#mail").val("");
+		$("#maillog").val("");
 		$("#passwordR").val("");
 		$("#password").val("");
 		$("#password").attr('class', '');
@@ -146,6 +222,9 @@ $(document).ready(function() {
 		$(".imagenchica").attr('src', '');
 		$("#formulario").attr("action","");
 		$("#resultado").html("");
+		$("#estadologin").attr('id', 'estado');//tampoco este
+		
+		
 		continuar=true;
 
 	});

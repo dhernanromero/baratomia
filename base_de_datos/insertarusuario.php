@@ -5,7 +5,7 @@ $pass=$_POST["pass"];
 $mail=$_POST["mail"];
 $password_h=password_hash($pass,PASSWORD_DEFAULT);
 $estado=0;
-
+$enviar=false;
 try {
 	$base=new PDO('mysql:host=localhost;dbname=bdusuarios','root','');
 	$base->exec("SET CHARACTER SET utf8");
@@ -43,7 +43,10 @@ try {
 
 		mail($para,$asunto,$mensajes,$desde);
 
+		
+
 		echo "revise su mail para poder activar su cuenta";
+		header("location:../base_de_datos/aviso_de_envio.html");
 		$resultado->closeCursor();
 
 	}
