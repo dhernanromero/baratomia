@@ -14,6 +14,10 @@ $(document).ready(function() {
 		$("#maillog").on('input', function(event) {
 			$("#incompleto").text('');
 		});
+		$("#passwordLogin").on('input',function(event) {
+			event.preventDefault();
+			$("#incompleto").text('');
+		});
 
 
 		  $("#passwordLogin").val('');
@@ -22,7 +26,7 @@ $(document).ready(function() {
 		  $("#password").hide();
 		  $("#password").attr('required', false);
 		  $("#passwordLogin").attr('required', true);
-		  $("#resultado").hide();//testear posible error de campo requerido?
+		  $("#resultado").hide();
 
 		  $("#estadologin").click(function(e) {
 		  	if($("#maillog").val().length<=0 && $("#passwordLogin").val().length<=0){
@@ -48,7 +52,7 @@ $(document).ready(function() {
 		  	var correo=$('#maillog').val();
 		  	var pass=$("#passwordLogin").val();
 		  	param={"mail":correo,"pass":pass};
-		  	console.log("lofin");
+		  	
 		  	$.ajax({
                 data:  param,
                 url:   'base_de_datos/login.php',
@@ -91,7 +95,7 @@ $(document).ready(function() {
 	$("#registro").click(function() {
 		$("#estado").off();
 		
-		$("#estado").attr('type', 'submit');//esto no es el problema
+		$("#estado").attr('type', 'submit');
 		
 
 
@@ -107,7 +111,7 @@ $(document).ready(function() {
 		  $("#password").attr('required', true);
 		  $("#passwordLogin").hide();
 		  $("#passwordLogin").attr('required', false); 
-		  $("#resultado").show();//testear posible error de campo requerido?
+		  $("#resultado").show();
 
 		$("#mail").on('input', function(event) {
 			$("#incompleto").text('');
@@ -167,13 +171,11 @@ $(document).ready(function() {
 		}
 	});
 
-
-	$('#mail').keyup(function(event) {
+	function verificar_existencia(){
 		var correo=$('#mail').val();
 		var parametros={
 			"email":correo,
 		};
-		//console.log(parametros);
 		 $.ajax({
                 data:  parametros,
                 url:   'base_de_datos/existemail.php',
@@ -199,8 +201,17 @@ $(document).ready(function() {
                         }
                 }
         });
-	});
 
+	}
+
+
+	$("#mail").blur(function(event) {
+		verificar_existencia();
+	});
+	$('#mail').keyup(function(event) {
+		verificar_existencia();
+	});
+	
 	});
 
 	$("#password,#passwordR,#passwordLogin").on('input', function(e) {
@@ -222,7 +233,7 @@ $(document).ready(function() {
 		$(".imagenchica").attr('src', '');
 		$("#formulario").attr("action","");
 		$("#resultado").html("");
-		$("#estadologin").attr('id', 'estado');//tampoco este
+		$("#estadologin").attr('id', 'estado');
 		
 		
 		continuar=true;

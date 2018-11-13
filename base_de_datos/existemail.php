@@ -1,5 +1,4 @@
 <?php 
-//print_r($_POST);
 $mail=$_POST["email"];
 
 try {

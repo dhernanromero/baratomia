@@ -10,10 +10,8 @@ try {
 	$activar->bindParam(":codigo",$code);
 	$activar->execute();
 	$activar->closeCursor();
-	echo"la cuenta fue activada";
 	header("location:../base_de_datos/cuenta_activada.html");
-	
-	
+	echo"la cuenta fue activada";
 } catch (Exception $e) {
 	die("Error:". $e->GetMessage());
 	

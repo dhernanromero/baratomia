@@ -45,10 +45,11 @@ try {
 
 		
 
-		echo "revise su mail para poder activar su cuenta";
+		
 		header("location:../base_de_datos/aviso_de_envio.html");
+		echo "revise su mail para poder activar su cuenta";
 		$resultado->closeCursor();
-
+		
 	}
 
 

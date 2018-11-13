@@ -20,10 +20,12 @@ try {
 			echo "activar";
 		}
 		else{
-			echo "ok";
 			session_start();
 			$_SESSION["usuario"]=$_POST["mail"];
-			header("location:../index2.php");}
+			header("location:../index2.php");
+			echo "ok";
+
+		}
 
 	}
 	else{

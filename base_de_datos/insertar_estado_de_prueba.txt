@@ -1,2 +1,0 @@
-INSERT INTO `bdusuarios`.`estado` (`idEstado`, `descripcion`) VALUES ('0', 'Inactivo');
-INSERT INTO `bdusuarios`.`estado` (`idEstado`,`descripcion`) VALUES ('1','Activo');
