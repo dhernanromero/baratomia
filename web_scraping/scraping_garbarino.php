@@ -40,54 +40,43 @@
 
         function obtenerDetalleProducto($urlProducto)
         {
-            $alto = '';
-            $ancho = '';
-            $profundidad = '';
-            $peso = '';
-            $duracionGarantia = '';
-            $origenGarantia = '';
-            $coberturaGarantia = '';
-            $rating = '';
-
             $html = file_get_html($urlProducto);
+            $rating = '';
+            $listado = array();
+
             if(isset($html))
             {
-                $containers = $html->find('div[class=row]');
-                foreach($containers as $container)
+                $columnas = $html->find('ul');
+                if(isset($columnas))
                 {
-                    $columnas = $container->find('ul');
-                    if(isset($columnas))
+                    foreach($columnas as $columna)
                     {
-                        foreach($columnas as $columna)
+                        $items = $columna->find('li');
+                        foreach($items as $item)
                         {
-                            $items = $columna->find('li');
-                            foreach($items as $item)
+                            $titulo = trim($item->find('span[class=gb-tech-spec-module-list-title]', 0)->innertext);
+                            $valor = trim($item->find('span[class=gb-tech-spec-module-list-description]', 0)->innertext);
+
+                            if(trim($titulo) != '')
                             {
-                                $titulo = trim($item->find('span[class=gb-tech-spec-module-list-title]', 0)->innertext);
-                                $valor = trim($item->find('span[class=gb-tech-spec-module-list-description]', 0)->innertext);
-
-                                if($titulo === 'Alto') $alto = trim(str_replace('cm', '', $valor));
-                                if($titulo === 'Ancho') $ancho = trim(str_replace('cm', '', $valor));
-                                if($titulo === 'Ancho.') $ancho = trim(str_replace('cm', '', $valor));
-                                if($titulo === 'Profundidad') $profundidad = trim(str_replace('cm', '', $valor));
-                                if($titulo === 'Peso') $peso = trim(str_replace('kg', '', $valor));
-
-                                if($titulo === 'Dimensiones')
+                                if($titulo != strip_tags($titulo))
                                 {
-                                    $valorSinCm = str_replace('cm', '', $valor);
-                                    $valores = explode('x', $valorSinCm);
-                                    if(count($valores) === 3)
+                                    $titulo = $item->find('span[class=gb-popover-title]', 0)->innertext;
+                                }
+                                if($valor === '')
+                                {
+                                    $valor = $item->innertext;
+                                    if($valor != strip_tags($valor))
                                     {
-                                        $alto = trim($valores[0]);
-                                        $ancho = trim($valores[1]);
-                                        $profundidad = trim($valores[2]);
+                                        $valores = explode('</span>', $valor);
+                                        $valor = $valores[count($valores)-1];
+                                        if(trim($valor) === '')
+                                        {
+                                            $valor = $valores[count($valores)-2];
+                                        }
                                     }
                                 }
-
-                                if($titulo === 'Duración') $duracionGarantia = $valor;
-                                if($titulo === 'Tiempo') $duracionGarantia = $valor;
-                                if($titulo === 'Cobertura') $coberturaGarantia = $valor;
-                                if($titulo === 'Origen') $origenGarantia = $valor;
+                                $listado[$titulo] = $valor;
                             }
                         }
                     }
@@ -108,15 +97,8 @@
             }
 
             $detalle = new DetalleProducto;
-
-            $detalle->alto = $alto;
-            $detalle->ancho = $ancho;
-            $detalle->profundidad = $profundidad;
-            $detalle->peso = $peso;
-            $detalle->duracionGarantia = $duracionGarantia;
-            $detalle->origenGarantia = $origenGarantia;
-            $detalle->coberturaGarantia = $coberturaGarantia;
             $detalle->rating = $rating;
+            $detalle->caracteristicas = $listado;
 
             return $detalle;
         }

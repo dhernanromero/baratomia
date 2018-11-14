@@ -1,13 +1,7 @@
 <?php
     class DetalleProducto
     {
-        public $alto;
-        public $ancho;
-        public $profundidad;
-        public $peso;
-        public $duracionGarantia;
-        public $origenGarantia;
-        public $coberturaGarantia;
-        public $rating;
+        public $rating; //puntaje del producto
+        public $caracteristicas; //array asociativo de caracteristicas de un producto
     }
 ?>
