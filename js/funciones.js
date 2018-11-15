@@ -1,9 +1,11 @@
 $(document).ready(function() {
+
+
 	$("#login").click(function() {
 		$("#password").val("");
 		$("#estado").attr('type', 'button');
 		$("#estado").attr('id', 'estadologin');
-
+		$("#incompleto").prepend('<a href="base_de_datos/reenviar_mail.php">Presione aqui si no recibio el mail de activacion</a>');
 
 		$("#formulario").attr("action","base_de_datos/login.php");
 		$(".modal,.fade").attr('id','formlogin');
@@ -240,7 +242,22 @@ $(document).ready(function() {
 
 	});
 
-	
+	$("#volver").click(function(event) {
+		$(location).attr('href',"../index.php");
+	});
+
+	$("#mail_envio").on('input', function(event) {
+		$("#incompleto_envio").text('');
+		
+	});
+	$("#password_envio").on('input', function(event) {
+		$("#incompleto_envio").text('');
+		
+	});
+
+
+
+
 
 });
 
