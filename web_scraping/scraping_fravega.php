@@ -1,6 +1,7 @@
 <?php
     require_once 'lib/simple_html_dom.php';
     require_once 'producto.php';
+    require_once 'detalleProducto.php';
 
     class ScrapingFravega
     {
@@ -47,6 +48,37 @@
                 }
             }
             return $listaProductos;
+        }
+
+        function obtenerDetalleProducto($urlProducto)
+        {
+            $html = file_get_html($urlProducto);
+            $rating = '';
+            $listado = array();
+
+            if(isset($html))
+            {
+                $container = $html->find('div[id=caracteristicas]', 0);
+                if(isset($container))
+                {
+                    $filas = $container->find('tr');
+                    if(isset($filas))
+                    {
+                        foreach($filas as $fila)
+                        {
+                            $clave = $fila->find('th', 0)->innertext;
+                            $valor = $fila->find('td', 0)->innertext;
+                            $listado[$clave] = $valor;
+                        }
+                    }
+                }
+            }
+
+            $detalle = new DetalleProducto;
+            $detalle->rating = $rating;
+            $detalle->caracteristicas = $listado;
+
+            return $detalle;
         }
     }
 ?>

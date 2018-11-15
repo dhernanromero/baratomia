@@ -42,5 +42,11 @@
             $scraping = new ScrapingGarbarino;
             return $scraping->obtenerDetalleProducto($urlProducto);
         }
+
+        function obtenerDetalleProductoFravega($urlProducto)
+        {
+            $scraping = new ScrapingFravega;
+            return $scraping->obtenerDetalleProducto($urlProducto);
+        }
     }
 ?>
