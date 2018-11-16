@@ -73,12 +73,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="articulo in articulos">
+                            <tr v-for="(articulo, indexArticulo) in articulos">
                                 <td>{{articulo.nombre}}</td>
-                                <td><a v-bind:href="articulo.url" v-text="articulo.url"></a></td>
+                                <td><a v-bind:href="articulo.url" v-text="articulo.url" target="_blank"></a></td>
                                 <td>{{articulo.precio}}</td>
                                 <td><img class="img-responsive" v-bind:src="articulo.imagen" ></td>
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" v-on:click="articuloSeleccionar(articulo, indexArticulo)"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -86,6 +86,7 @@
 
             </div>
             <div class="col-md-offset-1 col-md-2">
+                <button v-if="articulosListaComparar.length > 1" v-on:click="comprarArticulos" class="btn btn-info" type="button" >Comparar <span v-text="articulosListaComparar.length"></span> artículos </button>
                 <h4>Los más Buscados</h4>
                 <ul class="list-group">
                     <li v-for="(buscado, indexBuscado) in buscadosLista" v-text="buscado" class="list-group-item"></li>

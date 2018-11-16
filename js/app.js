@@ -4,6 +4,7 @@ const app = new Vue({
         articulos : [],
         buscadosLista : [],
         palabraBuscar: '',
+        articulosListaComparar :[]
     },
     methods: {
         buscarPalabra: function(){
@@ -18,8 +19,12 @@ const app = new Vue({
                }
             });
         },
+        // Inicia Busqueda y muestra resultados por medio de AJAX
         iniciarBusqueda: function(){
-            console.info('INCIANDO CONSULTA');
+            // Borra array con Articulos Seleccionados
+            this.articulosComparar = [];
+
+            console.info('INCIANDO CONSULTA AJAX');
             var palabras = this.palabraBuscar;
             patron = /[ ]/gi;            
             palabrasBuscar = palabras.replace(patron, '-');
@@ -56,6 +61,33 @@ const app = new Vue({
                 console.error("Error");
                 // error callback
             });
+        },
+        //
+        articuloSeleccionar: function(articulo, indexArticulo){
+            articulo.seleccionado = !articulo.seleccionado;
+
+            if( articulo.seleccionado ){
+                console.log(true);
+                this.articulosListaComparar.push(articulo);
+
+            }else {
+                console.log(false);
+                for (let i = 0; i < this.articulosListaComparar.length; i++) {
+                    if( this.articulosListaComparar[i] == articulo){
+                        this.articulosListaComparar.splice(i, 1)
+                    }
+                    
+                }
+            }
+
+            console.log('selecciono: ',articulo);
+            
+
+        },
+        // De los articulos seleccionados Envia datos y muesta detalles
+        comprarArticulos:  function(){
+            console.info('Iniciando comparacion');
         }
+
     }
 })
