@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="loginestilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
@@ -19,6 +20,7 @@
         header("Location:index2.php");
     }
  ?>
+ 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -41,7 +43,9 @@
             </div>
         </div>
     </nav>
+
     <div class="container" id="app">
+
         <div class="col-md-3">
         </div>
         <form v-on:submit.prevent="iniciarBusqueda">
@@ -55,6 +59,13 @@
         </form>
         <div class="row">
             <hr>
+            <div id="loading" style="display:none;">
+            <ul class="bokeh">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
         </div>
         <div class="row">
             <div class="col-md-9">
@@ -66,19 +77,20 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Sitio</th>
-                                <th>Precio</th>
-
+                                <th class="col-md-5">Nombre</th>
+                                <th class="col-md-3">Sitio</th>
+                                <th class="col-md-1">Precio</th>
+                                <th class="col-md-2">imagen</th>
+                                <th class="col-md-1">Comparar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="(articulo, indexArticulo) in articulos">
                                 <td>{{articulo.nombre}}</td>
-                                <td><a v-bind:href="articulo.url" v-text="articulo.url" target="_blank"></a></td>
+                                <td><a v-bind:href="articulo.url" target="_blank">Ver en Sitio</a></td>
                                 <td>{{articulo.precio}}</td>
                                 <td><img class="img-responsive" v-bind:src="articulo.imagen" ></td>
-                                <td><input type="checkbox" v-on:click="articuloSeleccionar(articulo, indexArticulo)"></td>
+                                <td><input v-on:click="articuloSeleccionar(articulo, indexArticulo)" type="checkbox"  class="form-control"></td>
                             </tr>
                         </tbody>
                     </table>
