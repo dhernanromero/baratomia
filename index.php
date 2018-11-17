@@ -20,8 +20,39 @@
         header("Location:index2.php");
     }
  ?>
- 
     <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./">BARATOMIA</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a id="registro" href="#" data-toggle="modal" data-target="#formregistro">Registrarse</a></li>
+                <li><a id="login" href="#"  data-toggle="modal" data-target="#formlogin">Loguearse</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">usuario@mail.com <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Perfil</a></li>
+                        <li><a href="#">Salir</a></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-inverse nav-info" style="display:none;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -33,16 +64,18 @@
             </div>
             <div class="collapse navbar-collapse" id="navBar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">BARATOMIA</a></li>
+                    <li class="active"><a href="#"> BARATOMIA</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <button id="registro" type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#formregistro">REGISTRARSE</button>
-                    <button id="login" type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#formlogin">LOGUEARSE
+                    <button id="registro2" type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#formregistro">REGISTRARSE</button>
+                    <button id="login2" type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#formlogin">LOGUEARSE
                     </button>
                 </ul>
             </div>
         </div>
     </nav>
+
+
 
     <div class="container" id="app">
 
@@ -54,7 +87,7 @@
             </div>
 
             <div class="col-md-3">
-                <button class="btn btn-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                <button class="btn btn-info" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
             </div>
         </form>
         <div class="row">
@@ -105,9 +138,7 @@
                 </ul>
             </div>
         </div>
-        <div class="row">
-            <pre> Buscando: {{ palabraBuscar }}</pre>
-        </div>
+
     </div>
     
 
@@ -147,12 +178,12 @@
     			</div>
   			</div>
 		</div>
-	<script src="js/jquery.js"></script>	
+    <script src="js/jquery.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>    
 	<script src="lib/vue.js"></script>
     <script src="lib/vue-resource.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/funciones.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	
 </body>
 

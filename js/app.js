@@ -59,7 +59,7 @@ const app = new Vue({
                         // CORREGIR CADA CLASE de Busqueda!!!
                         // Agrega palabra a Lista de Buscados, Se debe corregir en el servidor para cuando no se encuentren
                         // resultados, retorne un JSON vacio, porque por el momento retorn el error.
-                        
+                        this.palabraBuscar = '';
                         this.buscadosLista.push(this.palabraBuscar);
                     }
                 } catch (error) {
