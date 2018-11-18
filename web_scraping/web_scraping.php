@@ -48,5 +48,17 @@
             $scraping = new ScrapingFravega;
             return $scraping->obtenerDetalleProducto($urlProducto);
         }
+
+        function obtenerDetalleProductoMusimundo($urlProducto)
+        {
+            $scraping = new ScrapingMusimundo;
+            return $scraping->obtenerDetalleProducto($urlProducto);
+        }
+
+        function obtenerDetalleProductolinio($urlProducto)
+        {
+            $scraping = new ScrapingLinio;
+            return $scraping->obtenerDetalleProducto($urlProducto);
+        }
     }
 ?>
