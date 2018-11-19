@@ -4,7 +4,8 @@ const app = new Vue({
         articulos : [],
         buscadosLista : [],
         palabraBuscar: '',
-        articulosListaComparar :[]
+        articulosListaComparar :[],
+        mensajeEstado: ''
     },
     methods: {
         buscarPalabra: function(){
@@ -23,7 +24,7 @@ const app = new Vue({
         iniciarBusqueda: function(){
             // Borra array con Articulos Seleccionados
             this.articulosComparar = [];
-
+            this.mensajeEstado = '';
             console.info('INCIANDO CONSULTA AJAX');
             
             var palabras = this.palabraBuscar;
@@ -61,6 +62,7 @@ const app = new Vue({
                         // resultados, retorne un JSON vacio, porque por el momento retorn el error.
                         this.palabraBuscar = '';
                         this.buscadosLista.push(this.palabraBuscar);
+                        this.mensajeEstado = 'Se econtron ' + this.articulos.length + ' resultados para al busqueda';
                     }
                 } catch (error) {
                     console.error('Error ', error);
