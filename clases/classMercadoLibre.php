@@ -20,11 +20,14 @@
 		        
 		        // $listaProductos[] = $var;
 		        $producto = new Producto();
+		        $producto->id = $ProductosML['results'][$i]{"id"};
 		        $producto->nombre = $ProductosML["results"][$i]["title"];
 		        $producto->link = $ProductosML["results"][$i]["permalink"];
 		        $producto->urlImagen = $ProductosML["results"][$i]["thumbnail"];
 		        $producto->precio = (float)$ProductosML["results"][$i]["price"];
-		        
+		        $producto->codpagina = 'MLA';		        
+ 				$producto->pagina = 'Mercado Libre';	
+ 				
 		        $listaProductos[] = $producto;
 		    }
 

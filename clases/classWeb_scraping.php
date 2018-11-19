@@ -36,5 +36,28 @@
             $scraping = new ScrapingMusimundo;
             return $scraping->obtenerProductos($busqueda);
         }
+          function obtenerDetalleProductoGarbarino($urlProducto)
+        {
+            $scraping = new ScrapingGarbarino;
+            return $scraping->obtenerDetalleProducto($urlProducto);
+        }
+
+        function obtenerDetalleProductoFravega($urlProducto)
+        {
+            $scraping = new ScrapingFravega;
+            return $scraping->obtenerDetalleProducto($urlProducto);
+        }
+
+        function obtenerDetalleProductoMusimundo($urlProducto)
+        {
+            $scraping = new ScrapingMusimundo;
+            return $scraping->obtenerDetalleProducto($urlProducto);
+        }
+
+        function obtenerDetalleProductolinio($urlProducto)
+        {
+            $scraping = new ScrapingLinio;
+            return $scraping->obtenerDetalleProducto($urlProducto);
+        }
     }
 ?>

@@ -49,10 +49,13 @@ const app = new Vue({
                                 // url: row[2],
                                 // imagen: row[3],
                                 // precio: row[1]
+                                id: row.id;
                                 nombre: row.nombre,
                                 url: row.link,
                                 imagen: row.urlImagen,
                                 precio: row.precio,
+                                codpagina: row.codpagina;
+                                pagina: row.pagina;
                             });
                         });
                         //this.articulos = items;

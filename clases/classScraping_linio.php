@@ -1,6 +1,8 @@
 <?php
     require_once 'lib/simple_html_dom.php';
     require_once 'classProducto.php';
+    require_once 'classDetalleProducto.php';
+
 
     class ScrapingLinio
     {
@@ -38,6 +40,57 @@
                 $listaProductos[] = $producto;
             }
             return $listaProductos;
+        }
+
+         function obtenerDetalleProducto($urlProducto)
+        {
+            $html = file_get_html($urlProducto);
+            $rating = '';
+            $listado = array();
+
+            if(isset($html))
+            {
+                $container = $html->find('div[class=features-box-section col-xs-12 col-md-6 col-lg-4]', 0);
+                if(isset($container))
+                {
+                    $filas = $container->find('tr');
+                    if(isset($filas))
+                    {
+                        foreach($filas as $fila)
+                        {
+                            $clave = $fila->find('td', 0)->innertext;
+                            $valor = $fila->find('td', 1)->innertext;
+                            $listado[$clave] = $valor;
+                        }
+                    }
+                }
+
+                $divRating = $html->find('div[class=chart]', 0);
+                if(isset($divRating))
+                {
+                    $filasRating = $divRating->find('div[class=chart-progress]');
+                    if(isset($filasRating))
+                    {
+                        $rating = 0;
+                        $stars = 5;
+                        $cantVotos = 0;
+                        foreach($filasRating as $fila)
+                        {
+                            $dato = $fila->find('span', 2)->innertext;
+                            $rating = $rating + ($stars * $dato);
+                            if($dato != 0) $cantVotos = $cantVotos + $dato;
+                            $stars = $stars - 1;
+                        }
+                        $rating = round($rating / $cantVotos, 2);
+                    }
+                }
+            }
+
+            $detalle = new DetalleProducto;
+            $detalle->rating = $rating;
+            $detalle->caracteristicas = $listado;
+
+            return $detalle;
         }
     }
 ?>
