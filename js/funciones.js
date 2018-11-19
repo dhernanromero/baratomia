@@ -123,6 +123,10 @@ $(document).ready(function() {
 
 		$("#passwordR").on("input",function(e){ 
 		$("#incompleto").text('');
+		$("#passwordR").attr('class', '');
+		$("#password").attr('class', '');
+		$(".imagenchica").attr('src', '');
+		if ($("#passwordR").val().length==12) {
 		if ($("#password").val()===$("#passwordR").val()){
 			$("#passwordR").attr('class', 'ok');
 			$("#password").attr('class', 'ok');
@@ -135,11 +139,16 @@ $(document).ready(function() {
 			$("#password").attr('class', 'error');
 			$(".imagenchica").attr('src', 'base_de_datos/error.png');
 			
-		}
+		}}
 		});
 
+		//
 		$("#password").on("input",function(e){ 
 			$("#incompleto").text('');
+			$("#passwordR").attr('class', '');
+			$("#password").attr('class', '');
+			$(".imagenchica").attr('src', '');
+		if ($("#password").val().length==12 && $("#passwordR").val().length==12) {	
 		if ($("#passwordR").val()===$("#password").val()){
 			$("#passwordR").attr('class', 'ok');
 			$("#password").attr('class', 'ok');
@@ -153,8 +162,10 @@ $(document).ready(function() {
 			$(".imagenchica").attr('src', 'base_de_datos/error.png');
 			
 		}
+	}
+	//
+
 		});
-	
 
 	
 	console.log(continuar);
