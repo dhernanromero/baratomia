@@ -119,9 +119,9 @@
                         </thead>
                         <tbody>
                             <tr v-for="(articulo, indexArticulo) in articulos">
-                                <td>{{articulo.nombre}}</td>
+                                <td v-text="articulo.nombre"></td>
                                 <td><a v-bind:href="articulo.url" target="_blank">Ver en Sitio</a></td>
-                                <td>{{articulo.precio}}</td>
+                                <td v-text="articulo.precio"></td>
                                 <td><img class="img-responsive" v-bind:src="articulo.imagen" ></td>
                                 <td><input v-on:click="articuloSeleccionar(articulo, indexArticulo)" type="checkbox"  class="form-control"></td>
                             </tr>
@@ -144,40 +144,42 @@
 
 
     <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  			<div class="modal-dialog" role="document">
-  				<div class="modal-content">
-  					<div class="modal-header">
-  						<h5 class="modal-title" id="exampleModalLabel">Registrate</h5>
-  						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  		<div class="modal-dialog modal-sm" role="document">
+  			<div class="modal-content">
+  				<div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
   							<span aria-hidden="true">&times;</span>
   						</button>
-  					</div>
-  					<div class="modal-body">
-  						<form class="form-horizontal" method="POST" id="formulario" action="" >
-						<h2>Email</h2>
-						<input type="email" required="" id="mail" name="mail">
+  					<h4 class="modal-title"><i class="fa fa-address-card-o" aria-hidden="true"></i> <span id="exampleModalLabel">Registrate</span> </h4>
+  						
+  				</div>
+  				<div class="modal-body">
+  					<form class="form-horizontal" method="POST" id="formulario" action="" >
+						<h4>Email</h4>
+						<input type="email" required="" id="mail" name="mail" class="form-control">
                         <span id="resultado"></span>
-						<h2>Password</h2>
-						<input id="passwordLogin" type="password" required="" maxlength="12" minlength="12" name="passlogin" style="display:none;">
+						<h4>Password</h4>
+						<input id="passwordLogin" type="password" required="" maxlength="12" minlength="12" name="passlogin" style="display:none;" class="form-control">
 
-						<input id="password" type="password" required="" maxlength="12" minlength="12" name="pass">
+						<input id="password" type="password" required="" maxlength="12" minlength="12" name="pass" class="form-control">
 						<img src="" alt="" class="imagenchica">
 						<div id="ocultar">
-						<h2>Repetir Password</h2>
-						<input id="passwordR" class="" type="password" maxlength="12" minlength="12">
+						<h4>Repetir Password</h4>
+						<input id="passwordR" type="password" maxlength="12" minlength="12" class="form-control">
 						<img src="" alt="" class="imagenchica"><br>
 						</div>
-						<input  id="estado"  type="submit">
-                        <h3 id="incompleto"></h3>
-                     
-						</form>
-      				</div>
-      				<div class="modal-footer">
-        			<button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-      				</div>
-    			</div>
-  			</div>
-		</div>
+                        <br/>
+						<input  id="estado"  type="submit" class="btn btn-primary btn-block">
+                        <h4 id="incompleto"></h4>
+        			    <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Salir</button>
+
+					</form>
+      			</div>
+      			<div class="modal-footer">
+      			</div>
+    		</div>
+  		</div>
+	</div>
     <script src="js/jquery.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>    
 	<script src="lib/vue.js"></script>
