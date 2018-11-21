@@ -88,7 +88,7 @@ body.sidebar-collapse .navbar-default .navbar-brand {
     
  }
 
- #navbar li a:hover{
+ #navbar li a.menuOpcion:hover{
     color: #EEEEEE;
     text-shadow: 3px 2px 3px black;
     

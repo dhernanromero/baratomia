@@ -38,16 +38,23 @@
                 </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a id="registro" href="#" data-toggle="modal" data-target="#formregistro">Registrarse</a></li>
-                <li><a id="login" href="#"  data-toggle="modal" data-target="#formlogin">Loguearse</a></li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">usuario@mail.com <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Perfil</a></li>
-                        <li><a href="#">Salir</a></li>
-                    </ul>
-                </li>
+            <?php 
+                if(!isset($_SESSION["usuario"])){
+                    // header("Location:index.html");
+                    echo('<li><a id="registro" class="menuOpcion" href="#" data-toggle="modal" data-target="#formregistro">Registrarse</a></li>');
+                    echo('<li><a id="login" class="menuOpcion" href="#"  data-toggle="modal" data-target="#formlogin">Loguearse</a></li>');
+                } else {
+                    echo('
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $_SESSION["usuario"] . '<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Perfil</a></li>
+                            <li><a href="#">Salir</a></li>
+                        </ul>
+                    </li>
+                    ');
+                }
+            ?>
             </ul>
             </div>
         </div>
