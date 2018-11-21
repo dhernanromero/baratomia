@@ -40,11 +40,12 @@
                         $producto = new Producto;
                         $producto->nombre = $nombre;
                         $producto->precio = (float)str_replace('$', '', $precio);
+                        $producto->precio = (float)str_replace('.', '', $producto->precio);
                         $producto->link = $link;
                         $producto->urlImagen = $imagen;
                         $producto->codpagina = 'FRV';              
-                        $producto->pagina = 'Fravega';
-            
+                        // $producto->pagina = 'Fravega';
+                        $producto->pagina = "img/fravegalogo.jpg";
                         $listaProductos[] = $producto;
                     }
                 }

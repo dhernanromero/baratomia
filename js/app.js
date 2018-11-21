@@ -65,7 +65,7 @@ const app = new Vue({
                         // resultados, retorne un JSON vacio, porque por el momento retorn el error.
                         this.palabraBuscar = '';
                         this.buscadosLista.push(this.palabraBuscar);
-                        this.mensajeEstado = 'Se econtron ' + this.articulos.length + ' resultados para al busqueda';
+                        this.mensajeEstado = 'Se econtron ' + this.articulos.length + ' resultados para la busqueda';
                     }
                 } catch (error) {
                     console.error('Error ', error);

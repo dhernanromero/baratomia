@@ -13,14 +13,12 @@ if(isset($post['palabra'])){
 
     $webScraping = new WebScraping;
     $mlApi = new MercadoLibreApi;
-    //$busqueda;
-    //$resultados;
 
     $resultado1 = $mlApi->obtenerProductos($post['palabra']);
     $resultado2 = $webScraping->obtenerProductosGarbarino($post['palabra']);
-    //print_r($resultado);
-    //print_r($resultado);
-    $resultado = array_merge($resultado1,$resultado2);
+    $resultado3 = $webScraping->obtenerProductosFravega($post['palabra']);
+
+    $resultado = array_merge($resultado1,$resultado2,$resultado3);
 
 
     $nombre = array(); 

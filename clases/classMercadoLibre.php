@@ -28,8 +28,8 @@
 		        $producto->urlImagen = $ProductosML["results"][$i]["thumbnail"];
 		        $producto->precio = (float)$ProductosML["results"][$i]["price"];
 		        $producto->codpagina = 'MLA';		        
- 				$producto->pagina = 'Mercado Libre';	
-
+ 				// $producto->pagina = 'Mercado Libre';	
+ 				$producto->pagina = "img/mercadolibrelogo.jpg";
 		        $listaProductos[] = $producto;
 		    }
 

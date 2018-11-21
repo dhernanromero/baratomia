@@ -35,8 +35,8 @@
                 $producto->link = 'https://www.garbarino.com' . $link;
                 $producto->urlImagen = $imagen;
                 $producto->codpagina = 'GBO';              
-                $producto->pagina = 'Garbarino';
-
+                // $producto->pagina = 'Garbarino';
+                $producto->pagina = "img/garbarinologo.jpg";
                 $listaProductos[] = $producto;
                 
                 // $var = array();
