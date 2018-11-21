@@ -1,7 +1,7 @@
 <?php
 	require_once 'lib/simple_html_dom.php';
-    require_once 'classProducto.php';
-    require_once 'classDetalleProducto.php';
+    require_once 'producto.php';
+    require_once 'detalleProducto.php';
 
 	class MercadoLibreApi
 	{
@@ -76,5 +76,27 @@
             return $detalle;
 
 		}
+
+		// function obtenerDetalleProducto2($idProducto)
+		// {
+		// 	$url = "https://api.mercadolibre.com/items/".trim($idProducto);
+		// 	$detalleProd = json_decode(file_get_contents($url),true);
+
+		// 	$detProducto = array();
+		// 	$caractProducto = array();
+		//     foreach ($detalleProd as $dp)
+		//     {
+		//     	 $detProducto[] = $dp['attibuttes'];
+
+		//     }
+		//     foreach ($detProducto as $dp2)
+		//     {
+		//     	 $caractProducto[] = $dp['name'];
+		//     	 $caractProducto[] = $dp['value_name'];
+		//     }
+
+		       
+		//     return $caractProducto;
+		// }
 	}
 ?>

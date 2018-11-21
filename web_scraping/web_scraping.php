@@ -4,6 +4,7 @@
     require_once 'scraping_garbarino.php';
     require_once 'scraping_linio.php';
     require_once 'scraping_musimundo.php';
+    require_once 'scraping_mercadolibre.php';
 
     class WebScraping
     {        
@@ -59,6 +60,20 @@
         {
             $scraping = new ScrapingLinio;
             return $scraping->obtenerDetalleProducto($urlProducto);
+        }
+
+        function obtenerDetalleProductoMercadoLibre($urlProducto)
+        {
+
+            $scraping = new MercadoLibreApi;
+            return $scraping->obtenerDetalleProducto($urlProducto);
+        }
+
+        function obtenerDetalleProductoMercadoLibre2($urlProducto)
+        {
+            
+            $scraping = new MercadoLibreApi;
+            return $scraping->obtenerDetalleProducto2($urlProducto);
         }
     }
 ?>

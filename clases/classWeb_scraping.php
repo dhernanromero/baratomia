@@ -36,7 +36,7 @@
             $scraping = new ScrapingMusimundo;
             return $scraping->obtenerProductos($busqueda);
         }
-          function obtenerDetalleProductoGarbarino($urlProducto)
+        function obtenerDetalleProductoGarbarino($urlProducto)
         {
             $scraping = new ScrapingGarbarino;
             return $scraping->obtenerDetalleProducto($urlProducto);
@@ -57,6 +57,13 @@
         function obtenerDetalleProductolinio($urlProducto)
         {
             $scraping = new ScrapingLinio;
+            return $scraping->obtenerDetalleProducto($urlProducto);
+        }
+
+        function obtenerDetalleProductoMercadoLibre($urlProducto)
+        {
+
+            $scraping = new MercadoLibreApi;
             return $scraping->obtenerDetalleProducto($urlProducto);
         }
     }
