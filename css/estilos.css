@@ -296,6 +296,34 @@ Modal
     background-color: #F64747;
     color: #FFF;
 }
+/*
+Full screen Modal 
+*/
+.fullscreen-modal .modal-dialog {
+    margin: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    
+  }
+  @media (min-width: 768px) {
+    .fullscreen-modal .modal-dialog {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .fullscreen-modal .modal-dialog {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .fullscreen-modal .modal-dialog {
+       width: 1170px;
+    }
+  }
+
+
+
 
 /*
 Checkbox
@@ -427,3 +455,24 @@ Checkbox
         transform: rotate(360deg);
     }
     }
+
+    .card-producto {
+        margin-bottom: 30px;
+        cursor: pointer;
+      }
+      
+      .card-producto:hover{
+        color:#000;
+        background:#ffc;
+        display:block;
+        
+        /* Firefox */
+        -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+        /* Safari+Chrome */
+        -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+        /* Opera */
+        box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+        -webkit-transform: scale(1.10);
+        -moz-transform: scale(1.10);
+        -o-transform: scale(1.10);
+      }

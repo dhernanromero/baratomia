@@ -40,10 +40,11 @@
             <ul class="nav navbar-nav navbar-right">
             <?php 
                 if(!isset($_SESSION["usuario"])){
-                    // header("Location:index.html");
+                    // Menu Para Usuario No Logueado
                     echo('<li><a id="registro" class="menuOpcion" href="#" data-toggle="modal" data-target="#formregistro">Registrarse</a></li>');
                     echo('<li><a id="login" class="menuOpcion" href="#"  data-toggle="modal" data-target="#formlogin">Loguearse</a></li>');
                 } else {
+                    // Menu Usuario Logueado
                     echo('
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $_SESSION["usuario"] . '<span class="caret"></span></a>
@@ -90,7 +91,7 @@
         </div>
         <form v-on:submit.prevent="iniciarBusqueda">
             <div class="col-md-6">
-                <input v-model="palabraBuscar" @change="buscarPalabra" class="form-control" require placeholder="Buscar...">
+                <input v-model="palabraBuscar" class="form-control" require placeholder="Buscar...">
             </div>
 
             <div class="col-md-3">
@@ -131,7 +132,7 @@
                                 <td><a v-bind:href="articulo.url" target="_blank"><img class="img-responsive" v-bind:src="articulo.pagina" ></a></td>
                                 <td v-text="articulo.precio"></td>
                                 <td><img class="img-responsive" v-bind:src="articulo.imagen" ></td>
-                                <td><input v-on:click="articuloSeleccionar(articulo, indexArticulo)" type="checkbox"  class="form-control"></td>
+                                <td><input v-on:click="articuloSeleccionar(articulo, indexArticulo)" v-model="articulo.seleccionado" type="checkbox"  class="form-control"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -146,7 +147,9 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
 
+        </div>
     </div>
     
 
@@ -182,6 +185,42 @@
         			    <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Salir</button>
 
 					</form>
+      			</div>
+      			<div class="modal-footer">
+      			</div>
+    		</div>
+  		</div>
+    </div>
+    
+    <div class="modal fade fullscreen-modal " id="modalComparacion" tabindex="-1" role="dialog" aria-labelledby="modalComparacion" aria-hidden="true">
+  		<div class="modal-dialog modal-lg" role="document">
+  			<div class="modal-content">
+  				<div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  							<span aria-hidden="true">&times;</span>
+  						</button>
+  					<h4 class="modal-title"><i class="fa fa-search" aria-hidden="true"></i> <span>Comparación de Productos</span> </h4>
+  						
+  				</div>
+  				<div class="modal-body">
+                  <div class="col-sm-12 col-md-6 card-r">
+                    <div class="card card-producto"  data-codigo="0">
+                        <img class="card-img-top" src=""  alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{producto.nombre}}</h5>
+                            <a href="#" class="btn btn-primary">mas info</a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 card-r">
+                    <div class="card card-producto"  data-codigo="1">
+                        <img class="card-img-top" src=""  alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{producto.nombre}}</h5>
+                            <a href="#" class="btn btn-primary">mas info</a>
+                        </div>
+                    </div>
+                </div> 
       			</div>
       			<div class="modal-footer">
       			</div>

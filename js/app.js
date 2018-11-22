@@ -8,18 +8,7 @@ const app = new Vue({
         mensajeEstado: ''
     },
     methods: {
-        buscarPalabra: function(){
-            console.log("Buscando...");
-            console.log(this.palabraBuscar);
-            this.articulos.forEach(elemento => {
-               if(elemento.nombre == this.palabraBuscar){
-                   console.log(true);
-                   elemento.mostrar = true;
-               } else {
-                   elemento.mostrar = false;
-               }
-            });
-        },
+
         // Inicia Busqueda y muestra resultados por medio de AJAX
         iniciarBusqueda: function(){
             // Borra array con Articulos Seleccionados
@@ -85,12 +74,14 @@ const app = new Vue({
         articuloSeleccionar: function(articulo, indexArticulo){
             articulo.seleccionado = !articulo.seleccionado;
 
-            if( articulo.seleccionado ){
+            if( articulo.seleccionado && this.articulosListaComparar.length < 2 ){
                 console.log(true);
                 this.articulosListaComparar.push(articulo);
 
             }else {
                 console.log(false);
+                articulo.seleccionado = !articulo.seleccionado;
+
                 for (let i = 0; i < this.articulosListaComparar.length; i++) {
                     if( this.articulosListaComparar[i] == articulo){
                         this.articulosListaComparar.splice(i, 1)
@@ -113,7 +104,8 @@ const app = new Vue({
                 url += 'url=' +  escape( this.convertirB64( this.articulosListaComparar[i].url) )+'&'
                 
             }
-            window.open(url, "nombre de la ventana")
+            //window.open(url, "nombre de la ventana")
+            $('#modalComparacion').modal('show');
         },
         // Pasa Variables y Abre Pagina Comparar.php
         convertirB64: function (txt) {
