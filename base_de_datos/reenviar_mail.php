@@ -89,23 +89,24 @@ finally{
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="..//lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="..//loginestilos.css">
+    <link rel="stylesheet" href="..//css/estilos.css">
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
+                <a class="navbar-brand" href="../index.php">BARATOMIA</a>
             </div>
-            <div class="collapse navbar-collapse" id="navBar">
+
+            <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">BARATOMIA</a></li>
                 </ul>
-            
             </div>
         </div>
     </nav>
@@ -121,8 +122,7 @@ finally{
         <h3 id="incompleto_envio"><?php
         echo $mensaje;
         ?></h3>
-        <button id="volver" type="button" class="btn btn-primary btn-sm float-right">VOLVER
-                    </button>
+        <button id="volver" class="btn btn-info" type="submit"><i aria-hidden="true"></i> Volver</button>
 
     </form>
 	
