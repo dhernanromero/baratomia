@@ -27,12 +27,14 @@
                 $source = $image_container->find('source[type=image/jpeg]',0);
                 $detail_container = $ahref->find('div[class=detail-container]',0);
                 $price_section = $detail_container->find('div[class=price-section]',0);
-                $precio = $price_section->find('meta[itemprop=price]',0)->content;
+                $precio = $price_section->find('div[class=price-secondary]', 0)->innertext;
                 $link = 'https://www.linio.com.ar' . $ahref->href;
+                $precio = str_replace('$', '', $precio);
+                if(strpos($precio, ',') !== false) $precio = substr($precio, 0, strpos($precio, ','));
 
                 $producto = new Producto;
                 $producto->nombre = $nombre;
-                $producto->precio = (float)str_replace('$', '', $precio);
+                $producto->precio = $precio;
                 $producto->link = $link;
                 $producto->urlImagen = $imagen;
 

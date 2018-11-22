@@ -26,10 +26,12 @@
                 $precio = $item->find('span[class=value-item]', 0)->innertext;
                 $imagen = $item->find('img[itemprop=image]', 0)->src;
                 $link = $item->find('a', 0)->href;
+                $precio = str_replace('$', '', $precio);
+                if(strpos($precio, ',') !== false) $precio = substr($precio, 0, strpos($precio, ','));
 
                 $producto = new Producto;
                 $producto->nombre = $nombre;
-                $producto->precio = (float)str_replace('$', '', $precio);
+                $producto->precio = $precio;
                 $producto->link = 'https://www.garbarino.com' . $link;
                 $producto->urlImagen = $imagen;
 
