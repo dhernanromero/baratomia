@@ -36,11 +36,12 @@
                         $precio = $item->find('div[class=wrapData]', 0)->find('span[class=prodPrice]', 0)->find('em[class=BestPrice]', 0)->innertext;
                         $imagen = $item->find('div[class=image]', 0)->find('a', 0)->find('img', 0)->src;
                         $link = $item->find('div[class=wrapData]', 0)->find('h2', 0)->find('a', 0)->href;
-            
+                        if(strpos($precio, ',') !== false) $precio = substr($precio, 0, strpos($precio, ','));
+
                         $producto = new Producto;
                         $producto->nombre = $nombre;
-                        $producto->precio = (float)str_replace('$', '', $precio);
-                        $producto->precio = (float)str_replace('.', '', $producto->precio);
+                        $producto->precio = str_replace('$', '', $precio);
+                        $producto->precio = str_replace('.', '', $producto->precio);
                         $producto->link = $link;
                         $producto->urlImagen = $imagen;
                         $producto->codpagina = 'FRV';              

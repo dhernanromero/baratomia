@@ -26,10 +26,11 @@
                 $precio = $item->find('span[class=price online]', 0)->innertext;
                 $link = $item->find('a[class=img productClicked]', 0)->href;
                 $imagen = $item->find('a[class=img productClicked]', 0)->find('img', 0)->src;
+                if(strpos($precio, ',') !== false) $precio = substr($precio, 0, strpos($precio, ','));
 
                 $producto = new Producto;
                 $producto->nombre = $nombre;
-                $producto->precio = (float)str_replace('$', '', $precio);
+                $producto->precio = str_replace('$', '', $precio);
                 $producto->link = $link;
                 $producto->urlImagen = $imagen;
 

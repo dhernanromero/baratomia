@@ -30,10 +30,11 @@
                 $price_section = $detail_container->find('div[class=price-section]',0);
                 $precio = $price_section->find('meta[itemprop=price]',0)->content;
                 $link = 'https://www.linio.com.ar' . $ahref->href;
+                if(strpos($precio, ',') !== false) $precio = substr($precio, 0, strpos($precio, ','));
 
                 $producto = new Producto;
                 $producto->nombre = $nombre;
-                $producto->precio = (float)str_replace('$', '', $precio);
+                $producto->precio = str_replace('$', '', $precio);
                 $producto->link = $link;
                 $producto->urlImagen = $imagen;
 

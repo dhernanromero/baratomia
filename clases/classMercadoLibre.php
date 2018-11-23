@@ -26,7 +26,7 @@
 		        $producto->nombre = $ProductosML["results"][$i]["title"];
 		        $producto->link = $ProductosML["results"][$i]["permalink"];
 		        $producto->urlImagen = $ProductosML["results"][$i]["thumbnail"];
-		        $producto->precio = (float)$ProductosML["results"][$i]["price"];
+		        $producto->precio = $ProductosML["results"][$i]["price"];
 		        $producto->codpagina = 'MLA';		        
  				// $producto->pagina = 'Mercado Libre';	
  				$producto->pagina = "img/mercadolibrelogo.jpg";
