@@ -103,9 +103,9 @@
                         </thead>
                         <tbody>
                             <tr v-for="(articulo, indexArticulo) in articulos">
-                                <td v-text="articulo.nombre"></td>
+                                <td><a v-bind:href="articulo.url" target="_blank" v-text="articulo.nombre"></a></td>
                                 <!-- <td><a v-bind:href="articulo.url" target="_blank" >Ver en Sitio</a></td> -->
-                                <td><a v-bind:href="articulo.url" target="_blank"><img class="img-responsive" v-bind:src="articulo.pagina" ></a></td>
+                                <td><img class="img-responsive" v-bind:src="articulo.pagina" ></a></td>
                                 <td>$ <span v-text="articulo.precio"></span></td>
                                 <td><img class="img-responsive" v-bind:src="articulo.imagen" ></td>
                                 <td><input v-on:click="articuloSeleccionar(articulo, indexArticulo)" v-model="articulo.seleccionado" type="checkbox"  class="form-control"></td>
