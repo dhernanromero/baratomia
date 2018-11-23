@@ -65,23 +65,49 @@
    *  4. IMPRIME CADA OBJETO JSON DEL ARRAY
    * 
    */
-  $url = $_SERVER['REQUEST_URI'];
-  $parametros = explode('?', $url)[1];
-  $articulos = explode('url=', $parametros );
-  $listaArticulos = array();  // Tendras los json dentro.
-  unset($articulos[0]);
+    require_once 'clases/classWeb_scraping.php';
 
-  //print_r($articulos);  
-  foreach ($articulos as $valor) {
-   // echo('<br>');
-   // echo( '<p>'.  strstr(base64_decode( $valor ), '}', true) . "}" . '</p>');
-    array_push( $listaArticulos, 
-        (
-            json_decode( strstr(base64_decode( $valor ), '}', true) . "}")  
-        )
-      );
+    $url = $_SERVER['REQUEST_URI'];
+    $parametros = explode('?', $url)[1];
+    $articulos = explode('url=', $parametros );
+    $listaArticulos = array();  // Tendras los json dentro.
+    unset($articulos[0]);
+
+    //print_r($articulos);  
+    foreach ($articulos as $valor) {
+    // echo('<br>');
+    // echo( '<p>'.  strstr(base64_decode( $valor ), '}', true) . "}" . '</p>');
+        array_push( $listaArticulos, 
+            (
+                json_decode( strstr(base64_decode( $valor ), '}', true) . "}")  
+            )
+        );
   }
 
+    function obtenerDetallesProducto($urlProducto, $sitio){
+        $webScraping = new WebScraping;
+       // echo($sitio);
+       // echo($urlProducto);
+
+        switch ($sitio) {
+            case 'GBO':
+               // echo($webScraping->obtenerDetalleProductoGarbarino($urlProducto) );
+                return $webScraping->obtenerDetalleProductoGarbarino($urlProducto);
+                break; 
+            case 'MLA': 
+                //return $webScraping->obtenerDetalleProductoMercadoLibre($urlProducto);
+                break;
+            case 'FRV':
+                //echo('sraping fraverga');
+                return $webScraping->obtenerDetalleProductoFravega($urlProducto);
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+
+    }
 
 ?>
 <!--/      CODIGO PHP CON LA FUNCION SCRAPING -->
@@ -109,6 +135,8 @@
             echo($item->codpagina);
             echo('<br>');
  */
+            //print_r(obtenerDetallesProducto($item->url, $item->codpagina));
+            //$detalles = obtenerDetallesProducto($item->url, $item->codpagina);
             echo('
             <div class="col-sm-12 col-md-6 card-r">
             <div class="card card-producto"  data-codigo="'.$item->codpagina.'">
@@ -118,6 +146,15 @@
                         <h4 class="card-title">'.$item->nombre.'</h4>
                         <h4> $ ' .$item->precio .'</h4>
                         <a href="'.$item->url.'" class="btn btn-success" target="_blank">Ir al Sitio</a>
+                        <ul class="list-group">
+            '); 
+      /*       foreach ($detalles as $key => $value) {
+                    echo($value);
+                }  */              
+                  
+
+             echo(' <li class="list-group-item">Carcateristicas</li>
+                        </ul>
                     </div>
                 </div>
             </div>

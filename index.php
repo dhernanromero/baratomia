@@ -23,7 +23,7 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -60,30 +60,6 @@
             </div>
         </div>
     </nav>
-    <nav class="navbar navbar-inverse nav-info" style="display:none;">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-            </div>
-            <div class="collapse navbar-collapse" id="navBar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#"> BARATOMIA</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <button id="registro2" type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#formregistro">REGISTRARSE</button>
-                    <button id="login2" type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#formlogin">LOGUEARSE
-                    </button>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
 
     <div class="container" id="app">
 
@@ -130,7 +106,7 @@
                                 <td v-text="articulo.nombre"></td>
                                 <!-- <td><a v-bind:href="articulo.url" target="_blank" >Ver en Sitio</a></td> -->
                                 <td><a v-bind:href="articulo.url" target="_blank"><img class="img-responsive" v-bind:src="articulo.pagina" ></a></td>
-                                <td v-text="articulo.precio"></td>
+                                <td>$ <span v-text="articulo.precio"></span></td>
                                 <td><img class="img-responsive" v-bind:src="articulo.imagen" ></td>
                                 <td><input v-on:click="articuloSeleccionar(articulo, indexArticulo)" v-model="articulo.seleccionado" type="checkbox"  class="form-control"></td>
                             </tr>
