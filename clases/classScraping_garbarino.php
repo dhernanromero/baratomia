@@ -2,6 +2,7 @@
     require_once 'lib/simple_html_dom.php';
     require_once 'classProducto.php';
     require_once 'classDetalleProducto.php';
+    ini_set('display_errors',0);
 
     class ScrapingGarbarino
     {

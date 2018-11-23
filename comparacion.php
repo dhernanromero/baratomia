@@ -91,7 +91,6 @@
 
         switch ($sitio) {
             case 'GBO':
-               // echo($webScraping->obtenerDetalleProductoGarbarino($urlProducto) );
                 return $webScraping->obtenerDetalleProductoGarbarino($urlProducto);
                 break; 
             case 'MLA': 
@@ -136,7 +135,10 @@
             echo('<br>');
  */
             //print_r(obtenerDetallesProducto($item->url, $item->codpagina));
-            //$detalles = obtenerDetallesProducto($item->url, $item->codpagina);
+            $detalle = obtenerDetallesProducto($item->url, $item->codpagina);
+            $rating = $detalle->rating;
+            $detalles = $detalle->caracteristicas;
+       
             echo('
             <div class="col-sm-12 col-md-6 card-r">
             <div class="card card-producto"  data-codigo="'.$item->codpagina.'">
@@ -153,16 +155,22 @@
                 }  */              
                   
 
-             echo(' <li class="list-group-item">Carcateristicas</li>
-                        </ul>
+             echo ' <li class="list-group-item">Carcateristicas</li>';
+         
+             echo '<h3>rating: ' . $rating . '</h3>';
+             echo '<table border="1"><thead><tr><th>caracteristica</th><th>valor</th></tr></thead><tbody>';
+             foreach($detalles as $clave=>$valor)
+             {
+                 echo '<tr><td>' . $clave . '</td><td>' . $valor . '</td></tr>';
+             }
+             echo '</tbody></table>';
+ 
+                       echo '</ul>
                     </div>
                 </div>
             </div>
             
-            ');
-
-
-
+            ';
         }
     ?>
 
