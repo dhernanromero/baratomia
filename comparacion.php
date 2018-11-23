@@ -75,45 +75,54 @@
                   </div> 
   </div>
 
-
+<!--      CODIGO PHP CON LA FUNCION SCRAPING -->
 <?php
+  /*
+   *  1. OBTIENE LA URL.
+   *  2. CREA ARRAY CON CADA ARTICULO PASADO.
+   *  3. ITERA EL ARRAY, DECODIFICA y AGREGA AL ARRAY $listaArticulos
+   *  4. IMPRIME CADA OBJETO JSON DEL ARRAY
+   * 
+   */
   $url = $_SERVER['REQUEST_URI'];
   $parametros = explode('?', $url)[1];
   $articulos = explode('url=', $parametros );
- //echo ( $url);
- echo('<br>');
- echo('<br>');
+  $listaArticulos = array();  // Tendras los json dentro.
+  unset($articulos[0]);
 
- //echo ($parametros);
- echo('<br>');
- echo('<br>');
-
-print_r($articulos);
+  //print_r($articulos);  
 
 
  echo('<br>');
- echo('<p>Listas de URLS');
+ echo('<p>Listas de Articulos');
 
  echo('<p>---------------------------------------</p>');
 
   foreach ($articulos as $valor) {
     echo('<br>');
-    echo( '<a href='.base64_decode( $valor ).' target="_blank" >'.  base64_decode( $valor ) . '</a>');
+    echo( '<p>'.  strstr(base64_decode( $valor ), '}', true) . "}" . '</p>');
+    array_push( $listaArticulos, 
+        (
+            strstr(base64_decode( $valor ), '}', true) . "}"  
+        )
+      );
     echo('<br>');
   }
 
  echo('<br>');
-
+ echo('<br>');
+ echo('Array JSON:');
+ echo('<br>');
+  
+  print_r($listaArticulos);
 
 
 ?>
+<!--/      CODIGO PHP CON LA FUNCION SCRAPING -->
 
- <script src="js/jquery.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>    
-	<script src="lib/vue.js"></script>
-    <script src="lib/vue-resource.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/funciones.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>    
+
 	
 </body>
 
