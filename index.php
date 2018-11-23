@@ -94,9 +94,9 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th class="col-md-5">Nombre</th>
-                                <th class="col-md-3">Sitio</th>
-                                <th class="col-md-1">Precio</th>
+                                <th v-on:click="ordenarPorNombre" v-bind:class="thead.nombre == true ? 'th-seleccionado' : ''" class="col-md-5">Nombre <i class="fa fa-sort-alpha-asc btn-order" aria-hidden="true"></i> </th>
+                                <th v-on:click="ordenarPorSitio" v-bind:class="thead.sitio == true ? 'th-seleccionado' : ''" class="col-md-2">Sitio <i class="fa fa-sort-alpha-asc btn-order" aria-hidden="true"></i> </th>
+                                <th v-on:click="ordenarPorPrecio" v-bind:class="thead.precio == true ? 'th-seleccionado' : ''" class="col-md-2">Precio <i class="fa fa-sort-numeric-asc btn-order" aria-hidden="true"></i></th>
                                 <th class="col-md-2">imagen</th>
                                 <th class="col-md-1">Comparar</th>
                             </tr>

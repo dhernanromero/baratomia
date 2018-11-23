@@ -486,3 +486,10 @@ Checkbox
     -moz-transform: scale(1.10);
     -o-transform: scale(1.10);
 }
+
+th.th-seleccionado  {
+    cursor: pointer;
+    color: #22A7F0;
+
+    text-shadow: 1px 1px 1px #666666;
+}

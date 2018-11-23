@@ -3,6 +3,7 @@ const app = new Vue({
     data: {
         articulos : [],
         buscadosLista : [],
+        thead: {nombre:false, sitio:false, precio:false },
         palabraBuscar: '',
         articulosListaComparar :[],
         mensajeEstado: ''
@@ -114,6 +115,71 @@ const app = new Vue({
             window.open(url, "Comparaciones");
             //console.log(url);
             //$('#modalComparacion').modal('show');
+        },
+        // Ordena Articulos por Nombre
+        ordenarPorNombre: function(){
+            this.thead.nombre = !this.thead.nombre;
+
+            for (const key in this.thead) {
+                if (this.thead.hasOwnProperty(key)) {
+                    if( key != 'nombre'){
+                        this.thead[key] = false;
+                    }
+
+                }
+            }
+
+            this.articulos.sort( function(a,b){
+                if (a.nombre.toLowerCase() > b.nombre.toLowerCase()) {
+                    return 1;
+                }
+                if (a.nombre.toLowerCase() < b.nombre.toLowerCase()) {
+                    return -1;
+                }
+                return 0;
+            });
+        },
+        // Ordena Articulos por Sitio
+        ordenarPorSitio: function(){
+            this.thead.sitio = !this.thead.sitio;
+            for (const key in this.thead) {
+                if (this.thead.hasOwnProperty(key)) {
+                    if( key != 'sitio'){
+                        this.thead[key] = false;
+                    }
+
+                }
+            }
+            this.articulos.sort( function(a,b){
+                if (a.codpagina > b.codpagina) {
+                    return 1;
+                }
+                if (a.codpagina < b.codpagina) {
+                    return -1;
+                }
+                return 0;
+            });
+        },
+        // Ordena Articulos por Precio
+        ordenarPorPrecio: function(){
+            this.thead.precio = !this.thead.precio;
+            for (const key in this.thead) {
+                if (this.thead.hasOwnProperty(key)) {
+                    if( key != 'precio'){
+                        this.thead[key] = false;
+                    }
+
+                }
+            }
+            this.articulos.sort( function(a,b){
+                if (a.precio > b.precio) {
+                    return 1;
+                }
+                if (a.precio < b.precio) {
+                    return -1;
+                }
+                return 0;
+            });
         },
         // Pasa Variables y Abre Pagina Comparar.php
         convertirB64: function (txt) {
