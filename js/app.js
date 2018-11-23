@@ -52,8 +52,8 @@ const app = new Vue({
                         // CORREGIR CADA CLASE de Busqueda!!!
                         // Agrega palabra a Lista de Buscados, Se debe corregir en el servidor para cuando no se encuentren
                         // resultados, retorne un JSON vacio, porque por el momento retorn el error.
-                        this.palabraBuscar = '';
                         this.buscadosLista.push(this.palabraBuscar);
+                        this.palabraBuscar = '';
                         this.mensajeEstado = 'Se econtron ' + this.articulos.length + ' resultados para la busqueda';
                     }
                 } catch (error) {
@@ -104,7 +104,7 @@ const app = new Vue({
                 url += 'url=' +  escape( this.convertirB64( this.articulosListaComparar[i].url) )+'&'
                 
             }
-            //window.open(url, "nombre de la ventana")
+            window.open(url, "nombre de la ventana")
             $('#modalComparacion').modal('show');
         },
         // Pasa Variables y Abre Pagina Comparar.php

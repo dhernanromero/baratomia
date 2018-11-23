@@ -456,23 +456,33 @@ Checkbox
     }
     }
 
-    .card-producto {
-        margin-bottom: 30px;
-        cursor: pointer;
-      }
+.card-producto {
+    margin-bottom: 30px;
+    cursor: pointer;
+    color:#000;
+    
+    /* Firefox */
+    -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+    /* Safari+Chrome */
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    /* Opera */
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+
+}
       
-      .card-producto:hover{
-        color:#000;
-        background:#ffc;
-        display:block;
+.card-producto:hover {
+    color:#000;
+    background:#ffc;
+    display:block;
         
-        /* Firefox */
-        -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
-        /* Safari+Chrome */
-        -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-        /* Opera */
-        box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-        -webkit-transform: scale(1.10);
-        -moz-transform: scale(1.10);
-        -o-transform: scale(1.10);
-      }
+    /* Firefox */
+    -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+    /* Safari+Chrome */
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    /* Opera */
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    
+    -webkit-transform: scale(1.10);
+    -moz-transform: scale(1.10);
+    -o-transform: scale(1.10);
+}

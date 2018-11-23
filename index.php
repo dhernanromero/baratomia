@@ -130,7 +130,7 @@
                                 <td v-text="articulo.nombre"></td>
                                 <!-- <td><a v-bind:href="articulo.url" target="_blank" >Ver en Sitio</a></td> -->
                                 <td><a v-bind:href="articulo.url" target="_blank"><img class="img-responsive" v-bind:src="articulo.pagina" ></a></td>
-                                <td v-text="articulo.precio"></td>
+                                <td >$<span v-text="articulo.precio"></span></td>
                                 <td><img class="img-responsive" v-bind:src="articulo.imagen" ></td>
                                 <td><input v-on:click="articuloSeleccionar(articulo, indexArticulo)" v-model="articulo.seleccionado" type="checkbox"  class="form-control"></td>
                             </tr>
@@ -207,7 +207,7 @@
                     <div class="card card-producto"  data-codigo="0">
                         <img class="card-img-top" src=""  alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{producto.nombre}}</h5>
+                            <h5 class="card-title">Articulo 1</h5>
                             <a href="#" class="btn btn-primary">mas info</a>
                         </div>
                     </div>
@@ -216,11 +216,11 @@
                     <div class="card card-producto"  data-codigo="1">
                         <img class="card-img-top" src=""  alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{producto.nombre}}</h5>
+                            <h5 class="card-title">Articulo 2</h5>
                             <a href="#" class="btn btn-primary">mas info</a>
                         </div>
                     </div>
-                </div> 
+                  </div> 
       			</div>
       			<div class="modal-footer">
       			</div>
