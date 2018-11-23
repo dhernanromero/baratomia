@@ -61,6 +61,7 @@ const app = new Vue({
                     this.mensajeEstado = 'No se encontraron resultados para la busqueda de' + this.palabraBuscar ;
                     this.articulos = [];
                 } finally {
+                    this.articulosListaComparar = [];
                     this.ocultarLoading();
 
                 }
@@ -76,6 +77,9 @@ const app = new Vue({
         articuloSeleccionar: function(articulo, indexArticulo){
             articulo.seleccionado = !articulo.seleccionado;
 
+                //this.articulosListaComparar.push(articulo);
+
+ 
             if( articulo.seleccionado && this.articulosListaComparar.length < 2 ){
                 console.log(true);
                 this.articulosListaComparar.push(articulo);
@@ -96,7 +100,7 @@ const app = new Vue({
             
 
         },
-        // De los articulos seleccionados Envia datos y muesta detalles
+        // De los articulos seleccionados Envia datos y muesta detalles en comparacion.php
         comprarArticulos:  function(){
             console.info('Iniciando comparacion');
             //window.open("comparacion.php", "nombre de la ventana", "width=300, height=200");
@@ -105,13 +109,11 @@ const app = new Vue({
             for (let i = 0; i < this.articulosListaComparar.length; i++) {
                 //url += 'url=' +  escape( this.convertirB64( this.articulosListaComparar[i].url) )+'&'
                 url += 'url=' +  escape( this.convertirB64( JSON.stringify(this.articulosListaComparar[i]) ) )+'&'
-
-                
+             
             }
             window.open(url, "Comparaciones");
-            console.log(url);
-
-// JSON.stringify(obj)
+            //console.log(url);
+            //$('#modalComparacion').modal('show');
         },
         // Pasa Variables y Abre Pagina Comparar.php
         convertirB64: function (txt) {
@@ -126,5 +128,10 @@ const app = new Vue({
         ocultarLoading: function(){
             $("#loading").css("display", "none");
         }
-    }
+    },
+    computed: {
+        listaComparacion2: function(){
+
+        }
+    },
 })

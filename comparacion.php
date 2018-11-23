@@ -54,26 +54,7 @@
             </div>
         </div>
     </nav>
-  <div class="container">
-  <div class="col-sm-12 col-md-6 card-r">
-    <div class="card card-producto"  data-codigo="0">
-      <img class="card-img-top" src=""  alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Articulo 1</h5>
-        <a href="#" class="btn btn-primary">mas info</a>
-      </div>
-    </div>
-                  </div>
-                  <div class="col-sm-12 col-md-6 card-r">
-                    <div class="card card-producto"  data-codigo="1">
-                        <img class="card-img-top" src=""  alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Articulo 2</h5>
-                            <a href="#" class="btn btn-primary">mas info</a>
-                        </div>
-                    </div>
-                  </div> 
-  </div>
+
 
 <!--      CODIGO PHP CON LA FUNCION SCRAPING -->
 <?php
@@ -91,34 +72,66 @@
   unset($articulos[0]);
 
   //print_r($articulos);  
-
-
- echo('<br>');
- echo('<p>Listas de Articulos');
-
- echo('<p>---------------------------------------</p>');
-
   foreach ($articulos as $valor) {
-    echo('<br>');
-    echo( '<p>'.  strstr(base64_decode( $valor ), '}', true) . "}" . '</p>');
+   // echo('<br>');
+   // echo( '<p>'.  strstr(base64_decode( $valor ), '}', true) . "}" . '</p>');
     array_push( $listaArticulos, 
         (
-            strstr(base64_decode( $valor ), '}', true) . "}"  
+            json_decode( strstr(base64_decode( $valor ), '}', true) . "}")  
         )
       );
-    echo('<br>');
   }
-
- echo('<br>');
- echo('<br>');
- echo('Array JSON:');
- echo('<br>');
-  
-  print_r($listaArticulos);
 
 
 ?>
 <!--/      CODIGO PHP CON LA FUNCION SCRAPING -->
+
+
+  <div class="container">
+
+    <?php
+        //  Itera $listaArticulos, muestra Nombre, Precio, Imagen; y realiza nuevo scraping por medio de URL
+        // para obtener datos que se mostrar para la comparacion
+        foreach ($listaArticulos as $key => $item) {
+/*             echo('<br>');
+            
+            echo('<br>');
+            echo( $item->nombre);
+            echo('<br>');
+            echo($item->url);
+            echo('<br>');
+            echo($item->imagen);
+
+            echo('<br>');
+            echo($item->precio);
+
+            echo('<br>');
+            echo($item->codpagina);
+            echo('<br>');
+ */
+            echo('
+            <div class="col-sm-12 col-md-6 card-r">
+            <div class="card card-producto"  data-codigo="'.$item->codpagina.'">
+                <img class="card-img-top img-responsive" src="'.$item->imagen.'"  alt="Card image cap">
+    
+                    <div class="card-body">
+                        <h4 class="card-title">'.$item->nombre.'</h4>
+                        <h4> $ ' .$item->precio .'</h4>
+                        <a href="'.$item->url.'" class="btn btn-success" target="_blank">Ir al Sitio</a>
+                    </div>
+                </div>
+            </div>
+            
+            ');
+
+
+
+        }
+    ?>
+
+
+  </div>
+
 
   <script src="js/jquery.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>    
