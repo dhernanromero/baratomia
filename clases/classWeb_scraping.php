@@ -4,6 +4,7 @@
     require_once 'classScraping_garbarino.php';
     require_once 'classScraping_linio.php';
     require_once 'classScraping_musimundo.php';
+    require_once 'classMercadoLibre.php';
 
     class WebScraping
     {        

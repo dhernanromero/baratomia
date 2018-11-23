@@ -94,7 +94,7 @@
                 return $webScraping->obtenerDetalleProductoGarbarino($urlProducto);
                 break; 
             case 'MLA': 
-                //return $webScraping->obtenerDetalleProductoMercadoLibre($urlProducto);
+                return $webScraping->obtenerDetalleProductoMercadoLibre($urlProducto);
                 break;
             case 'FRV':
                 //echo('sraping fraverga');
@@ -138,7 +138,7 @@
             $detalle = obtenerDetallesProducto($item->url, $item->codpagina);
             $rating = $detalle->rating;
             $detalles = $detalle->caracteristicas;
-       
+            
             echo('
             <div class="col-sm-12 col-md-6 card-r">
             <div class="card card-producto"  data-codigo="'.$item->codpagina.'">
@@ -157,7 +157,7 @@
 
              echo ' <li class="list-group-item">Carcateristicas</li>';
          
-             echo '<h3>rating: ' . $rating . '</h3>';
+             echo '<h3>Rating: ' . $rating . '</h3>';
              echo '<table border="1"><thead><tr><th>caracteristica</th><th>valor</th></tr></thead><tbody>';
              foreach($detalles as $clave=>$valor)
              {
