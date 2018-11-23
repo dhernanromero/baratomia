@@ -60,30 +60,6 @@
             </div>
         </div>
     </nav>
-    <nav class="navbar navbar-inverse nav-info" style="display:none;">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-            </div>
-            <div class="collapse navbar-collapse" id="navBar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#"> BARATOMIA</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <button id="registro2" type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#formregistro">REGISTRARSE</button>
-                    <button id="login2" type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#formlogin">LOGUEARSE
-                    </button>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
 
     <div class="container" id="app">
 
@@ -192,41 +168,7 @@
   		</div>
     </div>
     
-    <div class="modal fade fullscreen-modal " id="modalComparacion" tabindex="-1" role="dialog" aria-labelledby="modalComparacion" aria-hidden="true">
-  		<div class="modal-dialog modal-lg" role="document">
-  			<div class="modal-content">
-  				<div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  							<span aria-hidden="true">&times;</span>
-  						</button>
-  					<h4 class="modal-title"><i class="fa fa-search" aria-hidden="true"></i> <span>Comparación de Productos</span> </h4>
-  						
-  				</div>
-  				<div class="modal-body">
-                  <div class="col-sm-12 col-md-6 card-r">
-                    <div class="card card-producto"  data-codigo="0">
-                        <img class="card-img-top" src=""  alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Articulo 1</h5>
-                            <a href="#" class="btn btn-primary">mas info</a>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-md-6 card-r">
-                    <div class="card card-producto"  data-codigo="1">
-                        <img class="card-img-top" src=""  alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Articulo 2</h5>
-                            <a href="#" class="btn btn-primary">mas info</a>
-                        </div>
-                    </div>
-                  </div> 
-      			</div>
-      			<div class="modal-footer">
-      			</div>
-    		</div>
-  		</div>
-	</div>
+
     <script src="js/jquery.js"></script>
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>    
 	<script src="lib/vue.js"></script>
