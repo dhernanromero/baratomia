@@ -32,23 +32,19 @@
                 </ul>
 
             <ul class="nav navbar-nav navbar-right">
-            <?php 
-                if(!isset($_SESSION["usuario"])){
-                    // Menu Para Usuario No Logueado
-                    echo('<li><a id="registro" class="menuOpcion" href="#" data-toggle="modal" data-target="#formregistro">Registrarse</a></li>');
-                    echo('<li><a id="login" class="menuOpcion" href="#"  data-toggle="modal" data-target="#formlogin">Loguearse</a></li>');
-                } else {
-                    // Menu Usuario Logueado
+            <?php  
+                session_start();
+                if(isset($_SESSION["usuario"])){
                     echo('
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $_SESSION["usuario"] . '<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Perfil</a></li>
-                            <li><a href="#">Salir</a></li>
+                            <li><a href="base_de_datos/cerrarsesion.php">Salir</a></li>
                         </ul>
                     </li>
                     ');
-                }
+                } 
             ?>
             </ul>
             </div>
