@@ -24,9 +24,9 @@ const app = new Vue({
             console.info(palabrasBuscar);
             this.mostrarLoading();
 
-            
             this.$http.post('busqueda.php', { palabra: palabrasBuscar }).then(response => {
                 console.log(response);
+
                 try {
                     if (response.status === 200) {
                         var respuesta = JSON.parse( response.bodyText);
@@ -70,6 +70,8 @@ const app = new Vue({
 
             }, response => {
                 console.error("Error");
+                this.mensajeEstado = 'No se encontraron resultados para la busqueda de' + this.palabraBuscar ;
+                this.articulos = [];
                 this.ocultarLoading();
 
             });
