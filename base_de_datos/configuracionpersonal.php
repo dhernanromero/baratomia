@@ -10,7 +10,7 @@
                     // Menu Usuario Logueado
                     echo('
                     <li class="dropdown">
-                        <h3 id="mailsesion">' . $_SESSION["usuario"] . '</h3>
+                        <h3 >' . $_SESSION["usuario"] . '</h3>
                     </li>
                     ');
                 

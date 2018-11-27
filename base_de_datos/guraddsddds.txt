@@ -1,5 +1,4 @@
-<?php  
-  /*  session_start();
+  session_start();
     if(!isset($_SESSION["usuario"]))
     {
     header("Location:index.php");
@@ -8,9 +7,9 @@
 $mail=$_SESSION["usuario"];
 */
 
-print_r($_POST);
+//print_r($_POST);
 $mail=$_POST["emailsesion"];
-	
+echo $mail;
 
 
 try {
@@ -28,7 +27,7 @@ try {
 	else{
 		echo "desactivado";
 	}
-	//$resultado->closeCursor();
+	$resultado->closeCursor();
 
 }
 
@@ -41,6 +40,3 @@ catch (Exception $e) {
 finally{
 	$base=null;
 }
-
-
- ?>

@@ -40,9 +40,9 @@
                     // Menu Usuario Logueado
                     echo('
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $_SESSION["usuario"] . '<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="mailsesion">' . $_SESSION["usuario"] .'<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="base_de_datos/configuracionpersonal.php">Perfil</a></li>
+                            <li id="irconfig"><a href="base_de_datos/configuracionpersonal.php">Perfil</a></li>
                             <li><a href="base_de_datos/cerrarsesion.php">Salir</a></li>
                         </ul>
                     </li>

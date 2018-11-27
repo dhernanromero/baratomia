@@ -266,7 +266,48 @@ $(document).ready(function() {
 		
 	});
 
+/////////aca no me cambia el radio 
+activadar_desactivado=false;
+desactivar_activado=false;
+$("#radio-desactivado").attr('checked',activadar_desactivado);
+$("#radio-activado").attr('checked',desactivar_activado);
 
+
+	$("#irconfig").click(function(event) {
+		
+		var correo=$('#mailsesion').text();
+		var datos={
+			"emailsesion":correo
+		};
+		 $.ajax({
+                data:  datos,
+                url:   'base_de_datos/ver_estado_suscripcion.php',
+                type:  'post',
+                beforeSend: function () {
+                },
+                success:  function (response) {
+                        var respuesta=response.trim();
+                        alert(respuesta);
+                        if (respuesta =="desactivado") {
+  
+                        	alert("entra en desactivado");
+                        	activadar_desactivado=true;
+                        	desactivar_activado=false;
+                        }
+                        else{
+
+                        	
+                        	activadar_desactivado=false;
+                        	desactivar_activado=true;
+                        	alert(desactivar_activado);
+                        }
+                }
+        });
+
+
+
+		
+	});
 
 
 
