@@ -59,7 +59,7 @@ const app = new Vue({
                     }
                 } catch (error) {
                     console.error('Error ', error);
-                    this.mensajeEstado = 'No se encontraron resultados para la busqueda de' + this.palabraBuscar ;
+                    this.mensajeEstado = 'No se encontraron resultados para la busqueda de ' + this.palabraBuscar ;
                     this.articulos = [];
                 } finally {
                     this.articulosListaComparar = [];
@@ -70,7 +70,7 @@ const app = new Vue({
 
             }, response => {
                 console.error("Error");
-                this.mensajeEstado = 'No se encontraron resultados para la busqueda de' + this.palabraBuscar ;
+                this.mensajeEstado = 'No se encontraron resultados para la busqueda de ' + this.palabraBuscar ;
                 this.articulos = [];
                 this.ocultarLoading();
 
@@ -154,10 +154,10 @@ const app = new Vue({
             }
             this.articulos.sort( function(a,b){
                 if (a.codpagina > b.codpagina) {
-                    return 1;
+                    return -1;
                 }
                 if (a.codpagina < b.codpagina) {
-                    return -1;
+                    return 1;
                 }
                 return 0;
             });
@@ -173,15 +173,21 @@ const app = new Vue({
 
                 }
             }
-            this.articulos.sort( function(a,b){
-                if (a.precio > b.precio) {
-                    return 1;
-                }
-                if (a.precio < b.precio) {
-                    return -1;
-                }
-                return 0;
-            });
+            // this.articulos.sort( function(a,b){
+            //     if (a.precio > b.precio) {
+            //         return 1;
+            //     }
+            //     if (a.precio < b.precio) {
+            //         return -1;
+            //     }
+            //     return 0;
+            // });
+           
+            if(this.thead.precio == true){
+                this.articulos.sort((a,b)=>b.precio - a.precio);
+            }else{
+                this.articulos.sort((a,b)=>a.precio - b.precio);
+            }
         },
         // Pasa Variables y Abre Pagina Comparar.php
         convertirB64: function (txt) {

@@ -42,6 +42,7 @@
                         $producto->nombre = $nombre;
                         $producto->precio = str_replace('$', '', $precio);
                         $producto->precio = str_replace('.', '', $producto->precio);
+                        $producto->precio = number_format((float)$producto->precio,2,'.','');
                         $producto->link = $link;
                         $producto->urlImagen = $imagen;
                         $producto->codpagina = 'FRV';              

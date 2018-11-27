@@ -22,11 +22,12 @@
 		        
 		        // $listaProductos[] = $var;
 		        $producto = new Producto();
-		        $producto->id = $ProductosML['results'][$i]{"id"};
+		        //$producto->id = $ProductosML['results'][$i]{"id"};
 		        $producto->nombre = $ProductosML["results"][$i]["title"];
 		        $producto->link = $ProductosML["results"][$i]["permalink"];
 		        $producto->urlImagen = $ProductosML["results"][$i]["thumbnail"];
 		        $producto->precio = $ProductosML["results"][$i]["price"];
+		        $producto->precio = number_format((float)$producto->precio,2,'.','');
 		        $producto->codpagina = 'MLA';		        
  				// $producto->pagina = 'Mercado Libre';	
  				$producto->pagina = "img/mercadolibrelogo.jpg";
