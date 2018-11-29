@@ -80,27 +80,29 @@ const app = new Vue({
         articuloSeleccionar: function(articulo, indexArticulo){
             articulo.seleccionado = !articulo.seleccionado;
 
-                //this.articulosListaComparar.push(articulo);
-
- 
-            if( articulo.seleccionado && this.articulosListaComparar.length < 2 ){
-                console.log(true);
-                this.articulosListaComparar.push(articulo);
-
-            }else {
-                console.log(false);
-                articulo.seleccionado = !articulo.seleccionado;
-
-                for (let i = 0; i < this.articulosListaComparar.length; i++) {
-                    if( this.articulosListaComparar[i] == articulo){
-                        this.articulosListaComparar.splice(i, 1)
-                    }
-                    
+            if(articulo.seleccionado)
+            {
+                console.log('checkbox seleccionado');
+                if(this.articulosListaComparar.length < 2)
+                {
+                    this.articulosListaComparar.push(articulo);
+                }
+                else
+                {
+                    alert('Se debe seleccionar máximo 2 productos para comparar. Destilde una de las opciones anteriores para poder seleccionar el producto deseado.');
+                    document.getElementById(articulo.url).checked = false;
                 }
             }
-
+            else
+            {
+                console.log('checkbox no seleccionado');
+                for (let i = 0; i < this.articulosListaComparar.length; i++) {
+                    if( this.articulosListaComparar[i] === articulo){
+                        this.articulosListaComparar.splice(i, 1)
+                    }
+                }
+            }
             console.log('selecciono: ',articulo);
-            
 
         },
         // De los articulos seleccionados Envia datos y muesta detalles en comparacion.php

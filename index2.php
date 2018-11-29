@@ -103,7 +103,7 @@
                                 <td><img class="img-responsive" v-bind:src="articulo.pagina" ></a></td>
                                 <td>$ <span v-text="articulo.precio"></span></td>
                                 <td><img class="img-responsive" v-bind:src="articulo.imagen" ></td>
-                                <td><input v-on:click="articuloSeleccionar(articulo, indexArticulo)" v-model="articulo.seleccionado" type="checkbox"  class="form-control"></td>
+                                <td><input v-on:click="articuloSeleccionar(articulo, indexArticulo)" v-model="articulo.seleccionado" type="checkbox"  class="form-control" :id="articulo.url"></td>
                             </tr>
                         </tbody>
                     </table>
