@@ -88,19 +88,13 @@ finally{
 
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="..//lib/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="..//loginestilos.css">
     <link rel="stylesheet" href="..//css/estilos.css">
+    <link rel="stylesheet" href="centrar.css">
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="../index.php">BARATOMIA</a>
             </div>
 
@@ -111,21 +105,24 @@ finally{
         </div>
     </nav>
 
-
-    <form class="form-horizontal" method="POST" id="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <h2>Email</h2>
-        <input type="email" required="" id="mail_envio" name="mail_envio">
+<div id="centrar">
+    <form class="form-horizontal" method="POST" id="formreenvio" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <h4>Ingrese el mail y password con el cual usted se registró:</h4>
+        <br>
+        <h4>Email</h4>
+        <input type="email" required="" id="mail_envio" name="mail_envio" class="form-control">
         <span id="resultado_envio"></span>
-        <h2>Password</h2>
-        <input id="password_envio" type="password" required="" maxlength="12" minlength="12" name="password_envio">
-        <input  id="estado_envio"  type="submit">
-        <h3 id="incompleto_envio"><?php
+        <h4>Password</h4>
+        <input id="password_envio" type="password" required="" maxlength="12" minlength="12" name="password_envio" class="form-control">
+        <br>
+        <input  id="estado_envio"  type="submit" class="btn btn-primary btn-block">
+        <h4 id="incompleto_envio"><?php
         echo $mensaje;
-        ?></h3>
+        ?></h4>
         <button id="volver" class="btn btn-info" type="submit"><i aria-hidden="true"></i> Volver</button>
 
     </form>
-	
+</div>	
     <script src="../js/jquery.js"></script>	
 	<script src="../lib/vue.js"></script>
     <script src="../lib/vue-resource.min.js"></script>

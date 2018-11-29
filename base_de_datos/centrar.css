@@ -1,0 +1,11 @@
+#formreenvio,.centrado
+{
+   padding:2px;
+   cursor:pointer;
+   display:block;
+   width:290px;
+   margin: 0 auto;
+   text-align:left;
+   border: 3px green inset;
+
+}
