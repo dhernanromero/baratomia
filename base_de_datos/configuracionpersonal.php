@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="./">BARATOMIA</a>
+                <a class="navbar-brand" href="./configuracionpersonal.php">BARATOMIA</a>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar">
