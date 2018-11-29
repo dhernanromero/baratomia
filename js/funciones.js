@@ -287,7 +287,7 @@ $("#radio-activado").attr('checked',desactivar_activado);
                 },
                 success:  function (response) {
                         var respuesta=response.trim();
-                        alert(respuesta);
+                        //alert(respuesta);
                         if (respuesta =="desactivado") {
   
                         	alert("entra en desactivado");
@@ -299,7 +299,7 @@ $("#radio-activado").attr('checked',desactivar_activado);
                         	
                         	activadar_desactivado=false;
                         	desactivar_activado=true;
-                        	alert(desactivar_activado);
+                        	//alert(desactivar_activado);
                         }
                 }
         });
