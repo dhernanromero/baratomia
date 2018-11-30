@@ -24,8 +24,8 @@
       "Google" => array(
         "enabled" => true,
         "keys" => array(
-          "id" => "895030131848-je9guv0li5mueancevepbgj7uq6k92dm.apps.googleusercontent.com",
-          "secret" => "FvXsbehjuFLBdk6x5MgZKmU_"
+          "id" => "895030131848-ujlnbuum4enlvrrc6camsigirqpif4i3.apps.googleusercontent.com",
+          "secret" => "v3Q65EzIZbaDDHhtpp2VwX6V"
         )
       )
     )

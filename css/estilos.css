@@ -493,3 +493,9 @@ th.th-seleccionado  {
 
     text-shadow: 1px 1px 1px #666666;
 }
+
+.btnloginsocial{
+    background-color: rgb(17, 17, 167);
+    color: white;
+    height: 35px;
+    }
