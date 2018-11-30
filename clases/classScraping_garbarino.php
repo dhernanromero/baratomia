@@ -22,7 +22,7 @@
                 {
                     break;
                 }
-                $nombre = $item->find('h3[itemprop=name]', 0)->innertext;
+                $nombre = ltrim($item->find('h3[itemprop=name]', 0)->innertext);
                 $precio = $item->find('span[class=value-item]', 0)->innertext;
                 $imagen = $item->find('img[itemprop=image]', 0)->src;
                 $link = $item->find('a', 0)->href;

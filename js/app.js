@@ -120,7 +120,7 @@ const app = new Vue({
             //console.log(url);
             //$('#modalComparacion').modal('show');
         },
-        // Ordena Articulos por Nombre
+         // Ordena Articulos por Nombre
         ordenarPorNombre: function(){
             this.thead.nombre = !this.thead.nombre;
 
@@ -133,16 +133,34 @@ const app = new Vue({
                 }
             }
 
-            this.articulos.sort( function(a,b){
-                if (a.nombre.toLowerCase() > b.nombre.toLowerCase()) {
-                    return 1;
-                }
-                if (a.nombre.toLowerCase() < b.nombre.toLowerCase()) {
-                    return -1;
-                }
-                return 0;
-            });
+            // if(this.thead.nombre == true){
+            //     this.articulos.sort( function(a,b){
+            //         if (a.nombre > b.nombre) {
+            //             return -1;
+            //         }
+            //         if (a.nombre < b.nombre) {
+            //             return 1;
+            //         }
+            //         return 0;
+            //     });
+            // }else{
+            //      this.articulos.sort( function(a,b){
+            //         if (a.nombre > b.nombre) {
+            //             return 1;
+            //         }
+            //         if (a.nombre < b.nombre) {
+            //             return -1;
+            //         }
+            //         return 0;
+            //     });
+            // }
+            if(this.thead.nombre == true){
+                this.articulos.sort((a,b) => a.nombre < b.nombre ? -1 : +(a.nombre > b.nombre));
+            }else{
+                this.articulos.sort((a,b) => b.nombre < a.nombre ? -1 : (b.nombre > a.nombre));
+            }
         },
+           
         // Ordena Articulos por Sitio
         ordenarPorSitio: function(){
             this.thead.sitio = !this.thead.sitio;
@@ -154,15 +172,27 @@ const app = new Vue({
 
                 }
             }
-            this.articulos.sort( function(a,b){
-                if (a.codpagina > b.codpagina) {
-                    return -1;
-                }
-                if (a.codpagina < b.codpagina) {
-                    return 1;
-                }
-                return 0;
-            });
+            if(this.thead.sitio == true){
+                this.articulos.sort( function(a,b){
+                    if (a.codpagina > b.codpagina) {
+                        return -1;
+                    }
+                    if (a.codpagina < b.codpagina) {
+                        return 1;
+                    }
+                    return 0;
+                });
+            }else{
+                 this.articulos.sort( function(a,b){
+                    if (a.codpagina > b.codpagina) {
+                        return 1;
+                    }
+                    if (a.codpagina < b.codpagina) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
         },
         // Ordena Articulos por Precio
         ordenarPorPrecio: function(){
@@ -175,15 +205,6 @@ const app = new Vue({
 
                 }
             }
-            // this.articulos.sort( function(a,b){
-            //     if (a.precio > b.precio) {
-            //         return 1;
-            //     }
-            //     if (a.precio < b.precio) {
-            //         return -1;
-            //     }
-            //     return 0;
-            // });
            
             if(this.thead.precio == true){
                 this.articulos.sort((a,b)=>b.precio - a.precio);
