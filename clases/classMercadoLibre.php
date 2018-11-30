@@ -8,7 +8,7 @@
 		function obtenerProductos($art)
 		{
 		   // echo "entre a la funcion";
-		    $url = "https://api.mercadolibre.com/sites/MLA/search?q=".str_replace(" ", "+", $art);
+		    $url = "https://api.mercadolibre.com/sites/MLA/search?q=".str_replace("-", "+", $art);
 		    $ProductosML = json_decode(file_get_contents($url),true);
 
 		    $listaProductos = array();
