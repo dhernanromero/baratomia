@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="loginestilos.css">
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/mover.css">
 </head>
 
 <body>
@@ -116,7 +117,6 @@
 
             </div>
             <div class="col-md-offset-1 col-md-2">
-                <button v-if="articulosListaComparar.length > 1" v-on:click="comprarArticulos" class="btn btn-info" type="button" >Comparar <span v-text="articulosListaComparar.length"></span> artículos </button>
                 <h4>Los más Buscados</h4>
                 <ul class="list-group">
                     <li v-for="(buscado, indexBuscado) in buscadosLista" v-text="buscado" class="list-group-item"></li>
@@ -125,6 +125,9 @@
         </div>
         <div class="row">
 
+        </div>
+        <div class="mover">
+            <button v-if="articulosListaComparar.length > 1" v-on:click="comprarArticulos" class="btn btn-info" type="button">Comparar los <span v-text="articulosListaComparar.length"></span> artículos </button>
         </div>
     </div>
     
