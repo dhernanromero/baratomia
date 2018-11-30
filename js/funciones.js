@@ -290,7 +290,7 @@ $("#radio-activado").attr('checked',desactivar_activado);
                         //alert(respuesta);
                         if (respuesta =="desactivado") {
   
-                        	alert("entra en desactivado");
+                        	//alert("entra en desactivado");
                         	activadar_desactivado=true;
                         	desactivar_activado=false;
                         }
