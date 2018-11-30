@@ -127,7 +127,9 @@
 
         </div>
         <div class="mover">
-            <button v-if="articulosListaComparar.length > 1" v-on:click="comprarArticulos" class="btn btn-info" type="button">Comparar los <span v-text="articulosListaComparar.length"></span> artículos </button>
+            <transition name="slide-fade">
+                <button v-if="articulosListaComparar.length > 1" v-on:click="comprarArticulos" class="btn btn-info" type="button">Comparar los <span v-text="articulosListaComparar.length"></span> artículos </button>
+            </transition>
         </div>
     </div>
     
