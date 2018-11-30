@@ -71,9 +71,9 @@
                         $items = $columna->find('li');
                         foreach($items as $item)
                         {
-                            $titulo = trim($item->find('span[class=gb-tech-spec-module-list-title]', 0)->innertext);
+                            $titulo = trim($item->find('h3[class=gb-tech-spec-module-list-title]', 0)->innertext);
                             $valor = trim($item->find('span[class=gb-tech-spec-module-list-description]', 0)->innertext);
-
+                            
                             if(trim($titulo) != '')
                             {
                                 if($titulo != strip_tags($titulo))
