@@ -88,6 +88,16 @@ body.sidebar-collapse .navbar-default .navbar-brand {
     
  }
 
+ #navbar li .dropdown-menu a{
+    background-color: #FFF;
+    color: #2c3e50;
+ }
+
+ #navbar li .dropdown-menu a:hover{
+    background-color: #EEEEEE;
+    color: #2c3e50;
+ }
+
  #navbar li a.menuOpcion:hover{
     color: #EEEEEE;
     text-shadow: 3px 2px 3px black;
