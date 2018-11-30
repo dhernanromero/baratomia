@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="loginestilos.css">
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/comparacion.css">
 </head>
 
 <body>
@@ -113,63 +114,124 @@
     <?php
         //  Itera $listaArticulos, muestra Nombre, Precio, Imagen; y realiza nuevo scraping por medio de URL
         // para obtener datos que se mostrar para la comparacion
+        echo '<h1 id="centrar">Comparación de productos</h1><br>';
+
+        $arrayImgDimensiones = array();
+        $ancho1 = 0;
+        $alto1 = 0;
+        $ancho2 = 0;
+        $alto2 = 0;
+        $ancho = 150;
+        $alto = 150;
+        if($listaArticulos[0]->codpagina === 'GBO')
+        {
+            $listaArticulos[0]->imagen = substr($listaArticulos[0]->imagen, 0, strpos($listaArticulos[0]->imagen, '.jpg') + 4);
+        }
+        if($listaArticulos[1]->codpagina === 'GBO')
+        {
+            $listaArticulos[1]->imagen = substr($listaArticulos[1]->imagen, 0, strpos($listaArticulos[1]->imagen, '.jpg') + 4);
+        }
+        $arrayImgDimensiones[] = getimagesize($listaArticulos[0]->imagen);
+        $arrayImgDimensiones[] = getimagesize($listaArticulos[1]->imagen);
+
+//imprime resultado de array que trae metodo getimagesize (con GBO no quiere andar)
+/*
+        foreach($arrayImgDimensiones as $arrays)
+        {
+            foreach($arrays as $item)
+            {
+                echo $item . '<br>';
+            }
+        }
+*/
+        $ancho1 = $arrayImgDimensiones[0][0];
+        $alto1 = $arrayImgDimensiones[0][1];
+        $ancho2 = $arrayImgDimensiones[1][0];
+        $alto2 = $arrayImgDimensiones[1][1];
+
+        if($ancho1 != null && $ancho2 != null)
+        {
+            if($ancho1 <= $ancho2)
+            {
+                $ancho = $ancho1;
+                $alto = $alto1;
+            }
+            if($ancho1 >= $ancho2)
+            {
+                $ancho = $ancho2;
+                $alto = $alto2;
+            }
+        }
+        else
+        {
+            if($ancho1 != null)
+            {
+                $ancho = $ancho1;
+                $alto = $alto1;
+            }
+            if($ancho2 != null)
+            {
+                $ancho = $ancho2;
+                $alto = $alto2;
+            }
+        }
+
+        $i = 0;
         foreach ($listaArticulos as $key => $item) {
-/*             echo('<br>');
-            
-            echo('<br>');
-            echo( $item->nombre);
-            echo('<br>');
-            echo($item->url);
-            echo('<br>');
-            echo($item->imagen);
 
-            echo('<br>');
-            echo($item->precio);
-
-            echo('<br>');
-            echo($item->codpagina);
-            echo('<br>');
- */
-            //print_r(obtenerDetallesProducto($item->url, $item->codpagina));
             $detalle = obtenerDetallesProducto($item->url, $item->codpagina);
-            $rating = $detalle->rating;
+            if($detalle->rating != '')
+            {
+                $rating = $detalle->rating;
+            }
+            else
+            {
+                $rating = 'No posee';
+            }
             $detalles = $detalle->caracteristicas;
-            
-            echo('
-            <div class="col-sm-12 col-md-6 card-r">
-            <div class="card card-producto"  data-codigo="'.$item->codpagina.'">
-                <img class="card-img-top img-responsive" src="'.$item->imagen.'"  alt="Card image cap">
-    
-                    <div class="card-body">
-                        <h4 class="card-title">'.$item->nombre.'</h4>
-                        <h4> $ ' .$item->precio .'</h4>
-                        <a href="'.$item->url.'" class="btn btn-success" target="_blank">Ir al Sitio</a>
-                        <ul class="list-group">
-            '); 
-      /*       foreach ($detalles as $key => $value) {
-                    echo($value);
-                }  */              
-                  
 
-             echo ' <li class="list-group-item">Carcateristicas</li>';
-         
-             echo '<h3>Rating: ' . $rating . '</h3>';
-             echo '<table border="1"><thead><tr><th>caracteristica</th><th>valor</th></tr></thead><tbody>';
-             foreach($detalles as $clave=>$valor)
-             {
-                 echo '<tr><td>' . $clave . '</td><td>' . $valor . '</td></tr>';
-             }
-             echo '</tbody></table>';
- 
-                       echo '</ul>
-                    </div>
+            if($i === 1)
+            {
+                echo 
+                '<div class="col-sm-12 col-md-2">
+                    <br><br><br><br><br><br><br><br><br><br><br>
+                    <img class="card-img-top img-responsive center-block" src="img/vs.jpg">
+                    <br><br><br><br><br><br><br><br><br><br><br>
+                </div>';
+            }
+
+            echo('
+            <div class="col-sm-12 col-md-5 card-r">
+                <div class="card card-producto"  data-codigo="'.$item->codpagina.'">
+                    <img class="card-img-top img-responsive center-block" src="'.$item->imagen.'" alt="Card image cap" width="' . $ancho . '" height="' . $alto . '">
+        
+                    <div class="card-body" id="centrar">
+                        <h4 class="card-title">'.$item->nombre.'</h4>
+                        <h3>Puntuación: ' . $rating . '</h3>
+                        <h2> $ ' .$item->precio .'</h2>
+                        <img src="' . $item->pagina . '"><br>
+                        <a href="'.$item->url.'" class="btn btn-success" target="_blank"><h4>Visitar el Sitio del producto</h4></a>
+                        <br><br>');
+
+            echo ' <li class="list-group-item" id="fondo-verde"><h4>Especificaciones técnicas</h4></li>';
+            echo 
+            '<table class="table table-striped table-bordered">
+                <tbody>';
+                    foreach($detalles as $clave=>$valor)
+                    {
+                        echo '<tr><td>' . $clave . '</td><td>' . $valor . '</td></tr>';
+                    }
+            echo 
+                '</tbody>
+            </table>';
+                       
+            echo
+                    '</div>
                 </div>
-            </div>
-            
-            ';
+            </div>';
+            $i++;
         }
     ?>
-
 
   </div>
 
