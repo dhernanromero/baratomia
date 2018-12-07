@@ -21,7 +21,7 @@ try {
 		}
 		else{
 			session_start();
-			$_SESSION["usuario"]=$_POST["mail"];
+			$_SESSION["email"]=$_POST["mail"];
 			//header("location:../index2.php");
 			header("location:../index.php");
 

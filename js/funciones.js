@@ -3,6 +3,7 @@ $(document).ready(function() {
 
 	$("#login").click(function() {
 		$("#password").val("");
+		$("#botongoogle").val("LOGUEATE CON GOOGLE");
 		$("#estado").attr('type', 'button');
 		$("#estado").attr('id', 'estadologin');
 		$("#incompleto").prepend('<a href="base_de_datos/reenviar_mail.php">Presione aqui si no recibio el mail de activacion</a>');
@@ -98,8 +99,7 @@ $(document).ready(function() {
 		$("#estado").off();
 		
 		$("#estado").attr('type', 'submit');
-		
-
+		$("#botongoogle").val("REGISTRATE CON GOOGLE");
 
 		$('#maillog').attr('id', 'mail');
 		

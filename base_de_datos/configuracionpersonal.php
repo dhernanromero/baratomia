@@ -1,11 +1,31 @@
 <body>
     <?php 
     session_start();
-    if(!isset($_SESSION["usuario"])){
+    if(!isset($_SESSION["email"])){
     header("Location:index.php");
 }
- ?>
+$picture="";
+if (isset($_SESSION['access_token'])){
+    $picture=$_SESSION['picture'];
+}
+else{
+    $picture="ensesion.png";
+}
 
+ ?>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../loginestilos.css">
+    <link rel="stylesheet" href="centrar.css">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body>
 
 
  <nav class="navbar navbar-inverse">
@@ -29,8 +49,10 @@
             <?php 
                     // Menu Usuario Logueado
                     echo('
+                    
+                    <img class="imagenmediana" src='.$picture.'>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $_SESSION["usuario"] . '<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $_SESSION["email"] . '<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="cerrarsesion.php">Salir</a></li>
                         </ul>
@@ -43,18 +65,7 @@
         </div>
     </nav>
 
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="centrar.css">
-    <link rel="stylesheet" href="../css/estilos.css">
-</head>
 
-<body>
     
 <div class="centrado">
 <form action="activar-desactivar-envio.php" method="POST" id="formconfigpersonal">

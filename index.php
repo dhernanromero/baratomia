@@ -16,10 +16,18 @@
 
 <body>
 <?php
-    session_start();
-    if(isset($_SESSION["usuario"])){
+require_once "loginGoogle/config.php";
+if (isset($_SESSION['acces_token']) or isset($_SESSION["email"])) {
+    header('Location:index2.php');
+    exit();
+    
+    
+}
+    /*if(isset($_SESSION["usuario"])){
         header("Location:index2.php");
-    }
+    }*/
+
+$loginURL=$gClient->createAuthUrl();
  ?>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -163,7 +171,7 @@
                         <br/>
 						<input  id="estado"  type="submit" class="btn btn-primary btn-block">
                         <h4 id="incompleto"></h4>
-                           <a href="loginGoogle/socialauthphp/index.php">REGISTRATE CON REDES SOCIALES</a>
+                        <input type="button" onclick="window.location='<?php echo $loginURL?>';" value="REGISTRATE CON GOOGLE" class="btn btn-danger form-control" id="botongoogle" >
                      <!--  <input class="btnloginsocial" value="REGISTRATE CON REDES SOCIALES" name="submit" type="submit" onClick="javascript:window.location('loginGoogle/socialauthphp/index.php')" />-->
         			    <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Salir</button>
 

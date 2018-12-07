@@ -15,12 +15,25 @@
 </head>
 
 <body>
-    <?php 
+<?php
+    
     session_start();
-    if(!isset($_SESSION["usuario"])){
-    header("Location:index.php");
+    $usuario=$_SESSION['email'];
+    if (!isset($_SESSION['access_token']) and !isset($_SESSION["email"]) ) {
+    header('Location:index.php');
+    exit();
 }
- ?>
+
+$picture="";
+if (isset($_SESSION['access_token'])){
+    $picture=$_SESSION['picture'];
+}
+else{
+    $picture="base_de_datos/ensesion.png";
+}
+
+
+?>
  <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -40,13 +53,17 @@
             	<?php 
                     // Menu Usuario Logueado
                     echo('
+                    <img class="imagenmediana" alt="imagen" src='.$picture.' >
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="mailsesion">' . $_SESSION["usuario"] .'<span class="caret"></span></a>
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="mailsesion">' . $usuario .'<span class="caret"></span></a>
+
                         <ul class="dropdown-menu" role="menu">
                             <li id="irconfig"><a href="base_de_datos/configuracionpersonal.php">Perfil</a></li>
                             <li><a href="base_de_datos/cerrarsesion.php">Salir</a></li>
                         </ul>
                     </li>
+
                     ');
                 
             ?>      
