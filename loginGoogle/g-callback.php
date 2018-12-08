@@ -21,7 +21,7 @@ $_SESSION['id']=$userData['id'];
 $_SESSION['picture']=$userData['picture'];
 
 
-$estado=2;
+$estado=1;
 $password_h=0;
 $cadena=0;
 $token=$_SESSION['id'];//esto necesito
@@ -35,7 +35,13 @@ $mail=$_SESSION['email'];//esto tambien
 	$comprobar->execute();
 	$resultado=$comprobar->fetchAll();
 	if($resultado){
-		echo "ERROR, el mail ya existe";
+		$actualizar="update usuarios set estado_idEstado =:estado, token_gmail =:token where usuarios.mail =:email";
+		$resultado=$base->prepare($actualizar);
+		$resultado->execute(array(":email"=>$mail,":estado"=>$estado,"token"=>$token));
+		$resultado->closeCursor();
+
+
+		
 		
 	}
 	else {
