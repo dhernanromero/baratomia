@@ -15,8 +15,25 @@ try {
 	$comprobar->execute();
 	$resultado=$comprobar->fetchAll();
 	if($resultado){
-		echo "ERROR, el mail ya existe";
+		$cadena=0;
+		$estado2=1;
+		$tienetoken="select token_gmail from usuarios where mail=:correo";
+		$verificar=$base->prepare($tienetoken);
+		$verificar->bindParam(":correo",$mail);
+		$verificar->execute();
+		$resultante=$verificar->fetch(PDO::FETCH_ASSOC);
+		if ($resultante['token_gmail']!==NULL) {
+			$actualizar="update usuarios set password =:password, estado_idEstado =:estado, cod_activacion =:activacion WHERE usuarios.mail =:email";
+			$realizar=$base->prepare($actualizar);
+			$realizar->execute(array(":password"=>$password_h,":estado"=>$estado2,":activacion"=>$cadena ,":email"=>$mail));
+			
+		header("location:../base_de_datos/cuenta_activada.html");
 		
+		$resultado->closeCursor();
+
+
+
+		}		
 	}
 	else {
 		$cadena="";

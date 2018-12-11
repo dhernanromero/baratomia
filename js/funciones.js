@@ -203,6 +203,18 @@ $(document).ready(function() {
                         	$("#resultado").html("Este mail ya existe, por favor ingrese otro");
                         	continuar=false;
                         }
+                        else if (respuesta==="Google") {
+                        	$("#resultado").html("Este mail esta registrado por google pero puede continuar con el registro por mail y password.");
+                        	continuar=true;
+
+                        }
+                        else if (respuesta==="ERROR2") {
+                        	$("#resultado").html("Este mail ya existe, por favor ingrese otro");
+                        	continuar=false;
+
+                        }
+
+
                         else{
                         	if(correo==""){
                         		$("#resultado").html("por favor complete el campo mail");

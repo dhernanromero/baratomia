@@ -10,9 +10,36 @@ try {
 	$comprobar->execute();
 	$resultado=$comprobar->fetchAll();
 	if($resultado){
-		echo "ERROR";
+		$tienetoken="select token_gmail,password from usuarios where mail=:correo";
+		$verificar=$base->prepare($tienetoken);
+		$verificar->bindParam(":correo",$mail);
+		$verificar->execute();
+		$resultante=$verificar->fetch(PDO::FETCH_ASSOC);
+		if ($resultante['token_gmail']!==NULL and  $resultante['password']==="0") {///asi esta bien la logica
+			echo "Google";
+
+		}
+		elseif($resultante['token_gmail']!==NULL and $resultante['password']!=="0"){///asi esta bie la logica
+			echo "ERROR2";	
+		}
 		
+		
+
+			
+
+
+
+		///////
+		else{
+		echo "ERROR";
+		}
+	
+
+
+
 	}
+
+
 	else {
 		echo "OK";
 	}
